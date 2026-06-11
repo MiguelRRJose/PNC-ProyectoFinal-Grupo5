@@ -7,13 +7,11 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateLectionRequest {
+public class CreateQuestionRequest {
 
-    @NotBlank(message = "Title is required.")
-    private String title;
-
+    @NotBlank(message = "Content is required.")
     private String content;
 
-    @NotNull(message = "Module ID is required.")
-    private Long moduleId;
+    @NotNull(message = "Lection ID is required.")
+    private Long lectionId;
 }
