@@ -6,9 +6,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ModuleResponse {
+public class VideoResponse {
     private Long id;
-    private String title;
-    private Integer index;
-    private Long courseId;
+    private String videoUrl;
+    private Long lectionId;
 }

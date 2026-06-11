@@ -6,9 +6,8 @@ import lombok.*;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class ModuleResponse {
+public class FileResponse {
     private Long id;
-    private String title;
-    private Integer index;
-    private Long courseId;
+    private String pathToFile;
+    private Long lectionId;
 }
