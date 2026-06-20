@@ -1,5 +1,6 @@
 package com.example.cursoapp.dto.catalogue.course;
 
+import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
 import com.example.cursoapp.dto.content.module.ModuleResponse;
 
 import java.time.Instant;
@@ -11,7 +12,7 @@ public record InstructorCourseResponse(
         UUID id,
         String name,
         Double price,
-        List<TagResponse> tags, //TODO: Import TagResponse when implemented
+        List<BasicTagResponse> tags,
         Instant createdAt,
         List<ModuleResponse> modules,
 
