@@ -1,8 +1,7 @@
 package com.example.cursoapp.mapper;
 
-import com.example.cursoapp.domain.entity.Module;
-import com.example.cursoapp.dto.request.CreateModuleRequest;
-import com.example.cursoapp.dto.response.ModuleResponse;
+import com.example.cursoapp.domain.entity.content.Module;
+import com.example.cursoapp.dto.content.module.ModuleResponse;
 import org.springframework.stereotype.Component;
 
 @Component

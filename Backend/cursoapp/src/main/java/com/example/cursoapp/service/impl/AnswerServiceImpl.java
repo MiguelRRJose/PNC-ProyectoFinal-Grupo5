@@ -1,10 +1,10 @@
 package com.example.cursoapp.service.impl;
 
-import com.example.cursoapp.domain.entity.Answer;
-import com.example.cursoapp.domain.entity.Question;
+import com.example.cursoapp.domain.entity.content.Answer;
+import com.example.cursoapp.domain.entity.content.Question;
 import com.example.cursoapp.domain.entity.Usuario;
-import com.example.cursoapp.dto.request.CreateAnswerRequest;
-import com.example.cursoapp.dto.response.AnswerResponse;
+import com.example.cursoapp.dto.content.answer.CreateAnswerRequest;
+import com.example.cursoapp.dto.content.answer.AnswerResponse;
 import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.AnswerMapper;
 import com.example.cursoapp.repository.AnswerRepository;

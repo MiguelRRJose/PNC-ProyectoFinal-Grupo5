@@ -1,7 +1,7 @@
 package com.example.cursoapp.service;
 
-import com.example.cursoapp.dto.request.CreateAnswerRequest;
-import com.example.cursoapp.dto.response.AnswerResponse;
+import com.example.cursoapp.dto.content.answer.CreateAnswerRequest;
+import com.example.cursoapp.dto.content.answer.AnswerResponse;
 
 import java.util.List;
 

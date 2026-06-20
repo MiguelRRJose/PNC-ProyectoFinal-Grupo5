@@ -1,8 +1,8 @@
 package com.example.cursoapp.service;
 
-import com.example.cursoapp.dto.request.CreateLectionRequest;
-import com.example.cursoapp.dto.request.UpdateLectionRequest;
-import com.example.cursoapp.dto.response.LectionResponse;
+import com.example.cursoapp.dto.content.lection.CreateLectionRequest;
+import com.example.cursoapp.dto.content.lection.UpdateLectionRequest;
+import com.example.cursoapp.dto.content.lection.LectionResponse;
 
 import java.util.List;
 

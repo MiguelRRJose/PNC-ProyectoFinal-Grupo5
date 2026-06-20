@@ -1,6 +1,6 @@
 package com.example.cursoapp.repository;
 
-import com.example.cursoapp.domain.entity.Module;
+import com.example.cursoapp.domain.entity.content.Module;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

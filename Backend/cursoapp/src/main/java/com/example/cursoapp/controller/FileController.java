@@ -1,7 +1,7 @@
 package com.example.cursoapp.controller;
 
-import com.example.cursoapp.dto.request.CreateFileRequest;
-import com.example.cursoapp.dto.response.FileResponse;
+import com.example.cursoapp.dto.content.file.CreateFileRequest;
+import com.example.cursoapp.dto.content.file.FileResponse;
 import com.example.cursoapp.dto.response.GeneralResponse;
 import com.example.cursoapp.service.impl.FileServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;

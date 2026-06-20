@@ -1,9 +1,9 @@
 package com.example.cursoapp.controller;
 
-import com.example.cursoapp.dto.request.CreateModuleRequest;
-import com.example.cursoapp.dto.request.UpdateModuleRequest;
+import com.example.cursoapp.dto.content.module.CreateModuleRequest;
+import com.example.cursoapp.dto.content.module.UpdateModuleRequest;
 import com.example.cursoapp.dto.response.GeneralResponse;
-import com.example.cursoapp.dto.response.ModuleResponse;
+import com.example.cursoapp.dto.content.module.ModuleResponse;
 import com.example.cursoapp.service.impl.ModuleServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

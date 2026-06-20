@@ -1,7 +1,7 @@
 package com.example.cursoapp.service;
 
-import com.example.cursoapp.dto.request.CreateFileRequest;
-import com.example.cursoapp.dto.response.FileResponse;
+import com.example.cursoapp.dto.content.file.CreateFileRequest;
+import com.example.cursoapp.dto.content.file.FileResponse;
 
 import java.util.List;
 

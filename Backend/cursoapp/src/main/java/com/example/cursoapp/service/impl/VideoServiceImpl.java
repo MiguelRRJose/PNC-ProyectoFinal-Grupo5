@@ -1,9 +1,9 @@
 package com.example.cursoapp.service.impl;
 
-import com.example.cursoapp.domain.entity.Lection;
-import com.example.cursoapp.domain.entity.Video;
-import com.example.cursoapp.dto.request.CreateVideoRequest;
-import com.example.cursoapp.dto.response.VideoResponse;
+import com.example.cursoapp.domain.entity.content.Lection;
+import com.example.cursoapp.domain.entity.content.Video;
+import com.example.cursoapp.dto.content.video.CreateVideoRequest;
+import com.example.cursoapp.dto.content.video.VideoResponse;
 import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.VideoMapper;
 import com.example.cursoapp.repository.LectionRepository;

@@ -1,10 +1,10 @@
 package com.example.cursoapp.service.impl;
 
-import com.example.cursoapp.domain.entity.Lection;
-import com.example.cursoapp.domain.entity.Module;
-import com.example.cursoapp.dto.request.CreateLectionRequest;
-import com.example.cursoapp.dto.request.UpdateLectionRequest;
-import com.example.cursoapp.dto.response.LectionResponse;
+import com.example.cursoapp.domain.entity.content.Lection;
+import com.example.cursoapp.domain.entity.content.Module;
+import com.example.cursoapp.dto.content.lection.CreateLectionRequest;
+import com.example.cursoapp.dto.content.lection.UpdateLectionRequest;
+import com.example.cursoapp.dto.content.lection.LectionResponse;
 import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.LectionMapper;
 import com.example.cursoapp.repository.LectionRepository;

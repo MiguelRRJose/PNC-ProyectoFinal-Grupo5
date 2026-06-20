@@ -1,7 +1,7 @@
 package com.example.cursoapp.mapper;
 
-import com.example.cursoapp.domain.entity.File;
-import com.example.cursoapp.dto.response.FileResponse;
+import com.example.cursoapp.domain.entity.content.File;
+import com.example.cursoapp.dto.content.file.FileResponse;
 import org.springframework.stereotype.Component;
 
 @Component

@@ -1,7 +1,7 @@
 package com.example.cursoapp.service;
 
-import com.example.cursoapp.dto.request.CreateVideoRequest;
-import com.example.cursoapp.dto.response.VideoResponse;
+import com.example.cursoapp.dto.content.video.CreateVideoRequest;
+import com.example.cursoapp.dto.content.video.VideoResponse;
 
 import java.util.List;
 

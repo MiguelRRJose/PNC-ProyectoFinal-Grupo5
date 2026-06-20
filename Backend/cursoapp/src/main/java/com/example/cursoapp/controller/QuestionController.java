@@ -1,8 +1,8 @@
 package com.example.cursoapp.controller;
 
-import com.example.cursoapp.dto.request.CreateQuestionRequest;
+import com.example.cursoapp.dto.content.question.CreateQuestionRequest;
 import com.example.cursoapp.dto.response.GeneralResponse;
-import com.example.cursoapp.dto.response.QuestionResponse;
+import com.example.cursoapp.dto.content.question.QuestionResponse;
 import com.example.cursoapp.service.impl.QuestionServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;

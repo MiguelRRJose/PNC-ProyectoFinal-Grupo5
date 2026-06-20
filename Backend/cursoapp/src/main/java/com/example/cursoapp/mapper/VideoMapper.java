@@ -1,7 +1,7 @@
 package com.example.cursoapp.mapper;
 
-import com.example.cursoapp.domain.entity.Video;
-import com.example.cursoapp.dto.response.VideoResponse;
+import com.example.cursoapp.domain.entity.content.Video;
+import com.example.cursoapp.dto.content.video.VideoResponse;
 import org.springframework.stereotype.Component;
 
 @Component

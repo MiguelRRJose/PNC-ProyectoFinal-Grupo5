@@ -1,7 +1,7 @@
 package com.example.cursoapp.controller;
 
-import com.example.cursoapp.dto.request.CreateAnswerRequest;
-import com.example.cursoapp.dto.response.AnswerResponse;
+import com.example.cursoapp.dto.content.answer.CreateAnswerRequest;
+import com.example.cursoapp.dto.content.answer.AnswerResponse;
 import com.example.cursoapp.dto.response.GeneralResponse;
 import com.example.cursoapp.service.impl.AnswerServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
