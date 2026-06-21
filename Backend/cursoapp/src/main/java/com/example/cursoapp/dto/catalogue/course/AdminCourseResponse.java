@@ -24,9 +24,9 @@ public record AdminCourseResponse (
 
         // Estadísticas del curso
         Double averageRating,
-        Long reviewCount,
-        Long enrollmentCount,
-        Long certifiedCount,
+        Integer reviewCount,
+        Integer enrollmentCount,
+        Integer certifiedCount,
         Double totalRevenue,
 
         // Auditoría
