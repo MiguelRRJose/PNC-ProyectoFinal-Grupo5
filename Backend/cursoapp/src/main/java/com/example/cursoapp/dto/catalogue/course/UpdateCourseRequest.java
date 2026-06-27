@@ -2,10 +2,12 @@ package com.example.cursoapp.dto.catalogue.course;
 
 import jakarta.validation.constraints.DecimalMin;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Builder;
 
 import java.util.List;
 import java.util.UUID;
 
+@Builder
 public record UpdateCourseRequest(
         String name,
 

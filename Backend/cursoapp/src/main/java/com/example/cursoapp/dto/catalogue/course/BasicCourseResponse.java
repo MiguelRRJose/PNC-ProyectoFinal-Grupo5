@@ -1,12 +1,13 @@
 package com.example.cursoapp.dto.catalogue.course;
 
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
+import lombok.Builder;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
-
+@Builder
 public record BasicCourseResponse(
         UUID id,
         String name,

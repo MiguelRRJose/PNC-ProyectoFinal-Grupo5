@@ -2,10 +2,12 @@ package com.example.cursoapp.dto.catalogue.course;
 
 import com.example.cursoapp.domain.entity.catalogue.Tag;
 import jakarta.validation.constraints.*;
+import lombok.Builder;
 
 import java.util.List;
 import java.util.UUID;
 
+@Builder
 public record CreateCourseRequest (
         @NotNull(message = "No Name has been received.")
         @NotBlank(message = "The Course requires a name.")

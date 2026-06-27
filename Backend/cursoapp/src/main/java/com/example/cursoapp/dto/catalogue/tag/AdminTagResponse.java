@@ -1,8 +1,11 @@
 package com.example.cursoapp.dto.catalogue.tag;
 
+import lombok.Builder;
+
 import java.time.Instant;
 import java.util.UUID;
 
+@Builder
 public record AdminTagResponse(
         UUID id,
         String currentName,
@@ -10,11 +13,6 @@ public record AdminTagResponse(
         // Auditoría
         Instant createdAt,
         Instant lastModifiedAt,
-        String lastModifiedBy,
-
-        // No estoy seguro si considerar a este objeto como tal
-        // O si mejor manejarlo desde los logs
-        BasicTagResponse tagBefore
-
+        String lastModifiedBy
 ) {
 }

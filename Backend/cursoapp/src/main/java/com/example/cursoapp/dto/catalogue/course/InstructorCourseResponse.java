@@ -2,11 +2,13 @@ package com.example.cursoapp.dto.catalogue.course;
 
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
 import com.example.cursoapp.dto.content.module.ModuleResponse;
+import lombok.Builder;
 
 import java.time.Instant;
 import java.util.List;
 import java.util.UUID;
 
+@Builder
 public record InstructorCourseResponse(
         // Datos del curso para el instructor
         UUID id,
@@ -14,7 +16,6 @@ public record InstructorCourseResponse(
         Double price,
         List<BasicTagResponse> tags,
         Instant createdAt,
-        List<ModuleResponse> modules,
 
         // Datos administrativos, supongo
         Boolean isPublished,
@@ -24,11 +25,11 @@ public record InstructorCourseResponse(
 
         // Estadísticas públicas
         Double averageRating,
-        Long reviewCount,
+        Integer reviewCount,
 
         // Estadísticas propias del instructor
-        Long enrollmentCount,
-        Long certifiedCount,
+        Integer enrollmentCount,
+        Integer certifiedCount,
         Double totalRevenue
 ) {
 }

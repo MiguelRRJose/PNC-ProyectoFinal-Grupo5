@@ -1,7 +1,10 @@
 package com.example.cursoapp.dto.catalogue.tag;
 
+import lombok.Builder;
+
 import java.util.UUID;
 
+@Builder
 public record BasicTagResponse(
     UUID id,
     String name

@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
+import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -27,4 +28,7 @@ public class Tag {
     @CreationTimestamp
     @Column(name = "created_at", updatable = false)
     private Instant createdAt;
+
+    @ManyToMany(mappedBy = "tags", fetch = FetchType.LAZY)
+    private List<Course> courses;
 }
