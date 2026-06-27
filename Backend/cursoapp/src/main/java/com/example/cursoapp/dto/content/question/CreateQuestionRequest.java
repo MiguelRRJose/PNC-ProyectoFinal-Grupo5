@@ -1,17 +1,14 @@
 package com.example.cursoapp.dto.content.question;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreateQuestionRequest {
-
-    @NotBlank(message = "Content is required.")
-    private String content;
-
-    @NotNull(message = "Lection ID is required.")
+    @NotNull(message = "lection_id is required")
     private Long lectionId;
+
+    @NotBlank(message = "content is required")
+    private String content;
 }

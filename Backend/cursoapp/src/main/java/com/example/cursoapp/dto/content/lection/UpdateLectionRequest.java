@@ -1,11 +1,8 @@
 package com.example.cursoapp.dto.content.lection;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class UpdateLectionRequest {
     private String title;
     private String content;

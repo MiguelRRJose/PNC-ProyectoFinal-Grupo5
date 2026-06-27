@@ -1,17 +1,14 @@
 package com.example.cursoapp.dto.content.file;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreateFileRequest {
-
-    @NotBlank(message = "File path is required.")
-    private String pathToFile;
-
-    @NotNull(message = "Lection ID is required.")
+    @NotNull(message = "lection_id is required")
     private Long lectionId;
+
+    @NotBlank(message = "path_to_file is required")
+    private String pathToFile;
 }

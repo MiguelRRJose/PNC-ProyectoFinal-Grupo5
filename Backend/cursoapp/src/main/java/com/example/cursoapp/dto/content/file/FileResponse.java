@@ -1,6 +1,9 @@
 package com.example.cursoapp.dto.content.file;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -8,6 +11,6 @@ import lombok.*;
 @AllArgsConstructor
 public class FileResponse {
     private Long id;
-    private String pathToFile;
     private Long lectionId;
+    private String pathToFile;
 }

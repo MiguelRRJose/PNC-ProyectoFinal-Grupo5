@@ -1,21 +1,17 @@
 package com.example.cursoapp.dto.content.module;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreateModuleRequest {
+    @NotNull(message = "course_id is required")
+    private Long courseId;
 
-    @NotBlank(message = "Title is required.")
+    @NotBlank(message = "title is required")
     private String title;
 
-    @NotNull(message = "Index is required.")
-    @Min(value = 1, message = "Index must be at least 1.")
+    @NotNull(message = "index is required")
     private Integer index;
-
-    @NotNull(message = "Course ID is required.")
-    private Long courseId;
 }

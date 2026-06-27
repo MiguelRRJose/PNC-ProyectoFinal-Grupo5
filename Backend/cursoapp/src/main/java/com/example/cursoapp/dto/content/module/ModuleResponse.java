@@ -1,6 +1,9 @@
 package com.example.cursoapp.dto.content.module;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @Builder
@@ -8,7 +11,7 @@ import lombok.*;
 @AllArgsConstructor
 public class ModuleResponse {
     private Long id;
+    private Long courseId;
     private String title;
     private Integer index;
-    private Long courseId;
 }

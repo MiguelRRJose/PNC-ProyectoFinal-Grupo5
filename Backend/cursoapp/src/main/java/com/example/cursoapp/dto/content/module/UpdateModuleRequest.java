@@ -1,11 +1,8 @@
 package com.example.cursoapp.dto.content.module;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class UpdateModuleRequest {
     private String title;
     private Integer index;

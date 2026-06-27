@@ -1,19 +1,16 @@
 package com.example.cursoapp.dto.content.lection;
 
-import jakarta.validation.constraints.*;
-import lombok.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import lombok.Data;
 
 @Data
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
 public class CreateLectionRequest {
+    @NotNull(message = "module_id is required")
+    private Long moduleId;
 
-    @NotBlank(message = "Title is required.")
+    @NotBlank(message = "title is required")
     private String title;
 
     private String content;
-
-    @NotNull(message = "Module ID is required.")
-    private Long moduleId;
 }
