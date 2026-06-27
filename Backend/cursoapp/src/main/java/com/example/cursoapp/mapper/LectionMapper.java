@@ -6,13 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class LectionMapper {
-
-    public LectionResponse toDto(Lection lection) {
+    public LectionResponse toResponse(Lection lection) {
         return LectionResponse.builder()
                 .id(lection.getId())
+                .moduleId(lection.getModule().getId())
                 .title(lection.getTitle())
                 .content(lection.getContent())
-                .moduleId(lection.getModule().getId())
                 .build();
     }
 }

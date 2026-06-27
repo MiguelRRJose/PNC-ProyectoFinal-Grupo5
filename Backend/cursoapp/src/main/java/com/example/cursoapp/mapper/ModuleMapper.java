@@ -6,13 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ModuleMapper {
-
-    public ModuleResponse toDto(Module module) {
+    public ModuleResponse toResponse(Module module) {
         return ModuleResponse.builder()
                 .id(module.getId())
+                .courseId(module.getCourse().getId())
                 .title(module.getTitle())
                 .index(module.getIndex())
-                .courseId(module.getCourse().getId())
                 .build();
     }
 }

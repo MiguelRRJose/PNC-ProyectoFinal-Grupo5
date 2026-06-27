@@ -6,12 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class FileMapper {
-
-    public FileResponse toDto(File file) {
+    public FileResponse toResponse(File file) {
         return FileResponse.builder()
                 .id(file.getId())
-                .pathToFile(file.getPathToFile())
                 .lectionId(file.getLection().getId())
+                .pathToFile(file.getPathToFile())
                 .build();
     }
 }

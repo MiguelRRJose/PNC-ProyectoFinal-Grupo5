@@ -6,13 +6,12 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class QuestionMapper {
-
-    public QuestionResponse toDto(Question question) {
+    public QuestionResponse toResponse(Question question) {
         return QuestionResponse.builder()
                 .id(question.getId())
-                .content(question.getContent())
-                .lectionId(question.getLection().getId())
                 .userId(question.getUser().getId())
+                .lectionId(question.getLection().getId())
+                .content(question.getContent())
                 .creationDate(question.getCreationDate())
                 .build();
     }

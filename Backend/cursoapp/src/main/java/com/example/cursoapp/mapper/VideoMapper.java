@@ -6,12 +6,11 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VideoMapper {
-
-    public VideoResponse toDto(Video video) {
+    public VideoResponse toResponse(Video video) {
         return VideoResponse.builder()
                 .id(video.getId())
-                .videoUrl(video.getVideoUrl())
                 .lectionId(video.getLection().getId())
+                .videoUrl(video.getVideoUrl())
                 .build();
     }
 }
