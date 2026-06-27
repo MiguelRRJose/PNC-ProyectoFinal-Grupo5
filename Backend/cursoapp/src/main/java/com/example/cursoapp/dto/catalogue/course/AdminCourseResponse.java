@@ -33,7 +33,5 @@ public record AdminCourseResponse (
         // AdminUserResponse instructor, //TODO: Dedicated response for admins needed
         Instant lastActionAt,
         String lastActionBy
-
-        // List<Log> mostRecentLogs //TODO: When logs implemented, import here
 ) {
 }
