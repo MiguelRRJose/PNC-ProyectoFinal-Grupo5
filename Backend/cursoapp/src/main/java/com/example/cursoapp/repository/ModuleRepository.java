@@ -1,12 +1,27 @@
 package com.example.cursoapp.repository;
 
+import com.example.cursoapp.domain.entity.content.Lection;
 import com.example.cursoapp.domain.entity.content.Module;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
 import java.util.List;
 
 @Repository
 public interface ModuleRepository extends JpaRepository<Module, Long> {
-    List<Module> findByCourseId(Long courseId);
+    List<Module> findByCourseIdOrderByIndexAsc(Long courseId);
+    boolean existsByCourseIdAndIndex(Long courseId, Integer index);
+}
+
+
+/* ARCHIVO: repository/LectionRepository.java */
+package com.example.cursoapp.repository;
+
+import com.example.cursoapp.domain.entity.content.Lection;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+import java.util.List;
+
+@Repository
+public interface LectionRepository extends JpaRepository<Lection, Long> {
+    List<Lection> findByModuleId(Long moduleId);
 }
