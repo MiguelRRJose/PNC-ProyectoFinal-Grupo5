@@ -1,7 +1,6 @@
 package com.example.cursoapp.service.catalogue;
 
 import com.example.cursoapp.dto.catalogue.course.*;
-import jakarta.persistence.Basic;
 
 import java.util.List;
 import java.util.UUID;
@@ -22,7 +21,7 @@ public interface CourseService {
 
     InstructorCourseResponse createCourse(CreateCourseRequest request);
 
-    InstructorCourseResponse updateCourse(UpdateCourseRequest request);
+    InstructorCourseResponse updateCourse(UUID courseId, UpdateCourseRequest request);
 
     BasicCourseResponse publishCourse(UUID id);
     BasicCourseResponse unpublishCourse(UUID id);

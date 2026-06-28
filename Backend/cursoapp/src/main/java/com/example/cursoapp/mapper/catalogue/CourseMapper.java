@@ -5,6 +5,7 @@ import com.example.cursoapp.domain.entity.catalogue.Tag;
 import com.example.cursoapp.dto.catalogue.course.*;
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
 
+import java.time.Instant;
 import java.util.List;
 
 public class CourseMapper {
@@ -60,6 +61,7 @@ public class CourseMapper {
             Integer enrollmentCount,
             Integer certifiedCount,
             Double totalRevenue,
+            Instant lastActionAt,
             String lastActionBy
     ) {
         return AdminCourseResponse.builder()
@@ -76,7 +78,7 @@ public class CourseMapper {
                 .certifiedCount(certifiedCount)
                 .totalRevenue(totalRevenue)
                 //.instructor() //TODO: Add instructor info when AdminUserResponse is ready
-                .lastActionAt(course.getCreatedAt()) // Assuming last action is creation for now
+                .lastActionAt(lastActionAt)
                 .lastActionBy(lastActionBy)
                 .build();
     }
