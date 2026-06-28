@@ -3,7 +3,7 @@ package com.example.cursoapp.controller;
 import com.example.cursoapp.dto.content.answer.CreateAnswerRequest;
 import com.example.cursoapp.dto.content.answer.AnswerResponse;
 import com.example.cursoapp.dto.response.GeneralResponse;
-import com.example.cursoapp.service.impl.AnswerServiceImpl;
+import com.example.cursoapp.service.content.impl.AnswerServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;

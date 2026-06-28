@@ -4,7 +4,7 @@ import com.example.cursoapp.dto.content.module.CreateModuleRequest;
 import com.example.cursoapp.dto.content.module.UpdateModuleRequest;
 import com.example.cursoapp.dto.response.GeneralResponse;
 import com.example.cursoapp.dto.content.module.ModuleResponse;
-import com.example.cursoapp.service.impl.ModuleServiceImpl;
+import com.example.cursoapp.service.content.impl.ModuleServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
