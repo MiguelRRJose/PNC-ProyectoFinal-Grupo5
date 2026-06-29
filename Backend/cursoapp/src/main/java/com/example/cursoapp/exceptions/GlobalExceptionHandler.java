@@ -44,10 +44,23 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessRuleException.class)
     public ResponseEntity<ApiErrorResponse> handleBusinessRuleException(BusinessRuleException exception) {
-        return new ResponseEntity<>(ApiErrorResponse.builder()
-                .timestamp(Instant.now())
-                .code(HttpStatus.BAD_REQUEST.value())
-                .message(exception.getMessage())
-                .build(), HttpStatus.BAD_REQUEST);
+        return new ResponseEntity<>(
+                ApiErrorResponse.builder()
+                        .timestamp(Instant.now())
+                        .code(HttpStatus.BAD_REQUEST.value())
+                        .message(exception.getMessage())
+                        .build(), HttpStatus.BAD_REQUEST
+        );
+    }
+
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ApiErrorResponse> handleGeneric(Exception ex) {
+        return new ResponseEntity<>(
+                ApiErrorResponse.builder()
+                        .timestamp(Instant.now())
+                        .code(HttpStatus.INTERNAL_SERVER_ERROR.value())
+                        .message("An unexpected error occurred: " + ex.getMessage())
+                        .build(), HttpStatus.INTERNAL_SERVER_ERROR
+        );
     }
 }

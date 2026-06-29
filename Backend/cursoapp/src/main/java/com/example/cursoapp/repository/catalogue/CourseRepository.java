@@ -16,7 +16,7 @@ public interface CourseRepository extends JpaRepository<Course, UUID> {
 
     List<Course> findByIsPublishedTrueAndIsDeletedFalse();
 
-    List<Course> findByIsDeletedFalse();
+    List<Course> findByIsDeletedTrue();
 
     List<Course> findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(UUID instructorId);
 }

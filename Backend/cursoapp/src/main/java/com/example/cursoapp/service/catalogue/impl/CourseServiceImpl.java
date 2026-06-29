@@ -44,6 +44,8 @@ public class CourseServiceImpl implements CourseService {
         return Pair.of(averageScore, reviewCount);
     }
 
+    // Obtener cursos por ID
+
     @Override
     @Transactional(readOnly = true)
     public BasicCourseResponse findBasicCourseById(UUID id) {
@@ -108,6 +110,8 @@ public class CourseServiceImpl implements CourseService {
         );
     }
 
+    // Obtener todos los cursos
+
     //TODO: If I have time, implement a pagination here
     @Override
     @Transactional(readOnly = true)
@@ -150,6 +154,8 @@ public class CourseServiceImpl implements CourseService {
                         );
                 }).toList();
     }
+
+    // Obtener todos los cursos
 
     @Override
     @Transactional(readOnly = true)
