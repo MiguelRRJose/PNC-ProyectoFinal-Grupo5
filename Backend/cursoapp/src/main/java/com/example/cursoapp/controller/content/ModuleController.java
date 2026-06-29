@@ -1,4 +1,4 @@
-package com.example.cursoapp.controller;
+package com.example.cursoapp.controller.content;
 
 import com.example.cursoapp.dto.content.module.CreateModuleRequest;
 import com.example.cursoapp.dto.content.module.UpdateModuleRequest;

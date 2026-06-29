@@ -1,4 +1,4 @@
-package com.example.cursoapp.controller;
+package com.example.cursoapp.controller.content;
 
 import com.example.cursoapp.dto.content.question.CreateQuestionRequest;
 import com.example.cursoapp.dto.response.GeneralResponse;

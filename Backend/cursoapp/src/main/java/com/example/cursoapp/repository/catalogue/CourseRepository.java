@@ -14,9 +14,13 @@ public interface CourseRepository extends JpaRepository<Course, UUID> {
 
     //Claude me dijo que esto es legal, y que JPA hace la consulta automáticamente. Será de ver...
 
-    List<Course> findByIsPublishedTrueAndIsDeletedFalse();
+
+
+    // List<Course> findByIsPublishedTrueAndIsDeletedFalse();
 
     List<Course> findByIsDeletedTrue();
 
     List<Course> findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(UUID instructorId);
+
+    List<Course> findByIsPublishedAndIsDeleted(Boolean isPublished, Boolean isDeleted);
 }

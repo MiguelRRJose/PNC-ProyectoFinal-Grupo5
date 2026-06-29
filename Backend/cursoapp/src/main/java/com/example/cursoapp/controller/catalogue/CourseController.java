@@ -3,10 +3,10 @@ package com.example.cursoapp.controller.catalogue;
 import com.example.cursoapp.dto.GeneralResponse;
 import com.example.cursoapp.dto.catalogue.course.CreateCourseRequest;
 import com.example.cursoapp.dto.catalogue.course.UpdateCourseRequest;
+import com.example.cursoapp.service.catalogue.CourseService;
 import com.example.cursoapp.service.catalogue.impl.CourseServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,7 +21,7 @@ import java.util.UUID;
 @RequestMapping("/api/courses")
 @RequiredArgsConstructor
 public class CourseController {
-    private final CourseServiceImpl courseService;
+    private final CourseService courseService;
 
     private ResponseEntity<GeneralResponse> buildResponse(Object data, String message, HttpStatus status) {
         String uri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath();
@@ -55,10 +55,21 @@ public class CourseController {
         );
     }
 
-    @GetMapping("/{tagId}")
-    public ResponseEntity<GeneralResponse> getByTagId(@PathVariable UUID tagId) {
+    @GetMapping("/by-tag")
+    public ResponseEntity<GeneralResponse> getByTagId(@RequestParam UUID tagId) {
         return buildResponse(
                 courseService.getAllCoursesByTag(tagId),
+                "Courses successfully found.",
+                HttpStatus.OK
+        );
+    }
+
+    // This is mostly for general access? Admins should get more info.
+
+    @GetMapping("/by-instructor")
+    public ResponseEntity<GeneralResponse> getByInstructorId(@RequestParam UUID instructorId) {
+        return buildResponse(
+                courseService.getAllCoursesByInstructor(instructorId),
                 "Courses successfully found.",
                 HttpStatus.OK
         );
@@ -84,7 +95,7 @@ public class CourseController {
         );
     }
 
-    @PutMapping("/{id}/publish")
+    @PatchMapping("/{id}/publish")
     public ResponseEntity<GeneralResponse> publishCourse(@PathVariable UUID id) {
         return buildResponse(
                 courseService.publishCourse(id),
@@ -93,11 +104,11 @@ public class CourseController {
         );
     }
 
-    @PutMapping("/{id}/unpublish")
+    @PatchMapping("/{id}/unpublish")
     public ResponseEntity<GeneralResponse> unpublishCourse(@PathVariable UUID id) {
         return buildResponse(
                 courseService.unpublishCourse(id),
-                "Course successfully published.",
+                "Course successfully pulled out of catalogue.",
                 HttpStatus.OK
         );
     }
@@ -113,14 +124,12 @@ public class CourseController {
 
     // This thing only Admins should be able to do it
 
-    @PutMapping("/{id}/restore")
+    @PatchMapping("/{id}/restore")
     public ResponseEntity<GeneralResponse> restoreCourse(@PathVariable UUID id) {
         return buildResponse(
                 courseService.restoreCourse(id),
-                "Course successfully published.",
+                "Course successfully restored.",
                 HttpStatus.OK
         );
     }
-
-    @PutMapping("/{id}/")
 }

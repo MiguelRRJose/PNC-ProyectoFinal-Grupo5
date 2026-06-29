@@ -112,11 +112,10 @@ public class CourseServiceImpl implements CourseService {
 
     // Obtener todos los cursos
 
-    //TODO: If I have time, implement a pagination here
     @Override
     @Transactional(readOnly = true)
     public List<BasicCourseResponse> getAllCourses() {
-        List<Course> courses = courseRepository.findByIsPublishedTrueAndIsDeletedFalse();
+        List<Course> courses = courseRepository.findByIsPublishedAndIsDeleted(true, false);
 
         return courses.stream().map(
                 (course) -> {

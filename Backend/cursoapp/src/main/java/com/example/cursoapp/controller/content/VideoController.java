@@ -1,9 +1,9 @@
-package com.example.cursoapp.controller;
+package com.example.cursoapp.controller.content;
 
-import com.example.cursoapp.dto.content.file.CreateFileRequest;
-import com.example.cursoapp.dto.content.file.FileResponse;
+import com.example.cursoapp.dto.content.video.CreateVideoRequest;
 import com.example.cursoapp.dto.response.GeneralResponse;
-import com.example.cursoapp.service.content.impl.FileServiceImpl;
+import com.example.cursoapp.dto.content.video.VideoResponse;
+import com.example.cursoapp.service.content.impl.VideoServiceImpl;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -15,11 +15,11 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/files")
+@RequestMapping("/api/videos")
 @RequiredArgsConstructor
-public class FileController {
+public class VideoController {
 
-    private final FileServiceImpl fileService;
+    private final VideoServiceImpl videoService;
 
     private ResponseEntity<GeneralResponse> buildResponse(Object data, String message, HttpStatus status, HttpServletRequest request) {
         return ResponseEntity.status(status).body(
@@ -34,34 +34,34 @@ public class FileController {
     }
 
     @PostMapping
-    public ResponseEntity<GeneralResponse> createFile(
-            @Valid @RequestBody CreateFileRequest request,
+    public ResponseEntity<GeneralResponse> createVideo(
+            @Valid @RequestBody CreateVideoRequest request,
             HttpServletRequest httpRequest) {
-        FileResponse response = fileService.createFile(request);
-        return buildResponse(response, "File created successfully.", HttpStatus.CREATED, httpRequest);
+        VideoResponse response = videoService.createVideo(request);
+        return buildResponse(response, "Video created successfully.", HttpStatus.CREATED, httpRequest);
     }
 
     @GetMapping("/lection/{lectionId}")
-    public ResponseEntity<GeneralResponse> getFilesByLection(
+    public ResponseEntity<GeneralResponse> getVideosByLection(
             @PathVariable Long lectionId,
             HttpServletRequest httpRequest) {
-        List<FileResponse> response = fileService.getFilesByLection(lectionId);
-        return buildResponse(response, "Files retrieved successfully.", HttpStatus.OK, httpRequest);
+        List<VideoResponse> response = videoService.getVideosByLection(lectionId);
+        return buildResponse(response, "Videos retrieved successfully.", HttpStatus.OK, httpRequest);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GeneralResponse> getFileById(
+    public ResponseEntity<GeneralResponse> getVideoById(
             @PathVariable Long id,
             HttpServletRequest httpRequest) {
-        FileResponse response = fileService.getFileById(id);
-        return buildResponse(response, "File found.", HttpStatus.OK, httpRequest);
+        VideoResponse response = videoService.getVideoById(id);
+        return buildResponse(response, "Video found.", HttpStatus.OK, httpRequest);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeneralResponse> deleteFile(
+    public ResponseEntity<GeneralResponse> deleteVideo(
             @PathVariable Long id,
             HttpServletRequest httpRequest) {
-        fileService.deleteFile(id);
-        return buildResponse(null, "File deleted successfully.", HttpStatus.OK, httpRequest);
+        videoService.deleteVideo(id);
+        return buildResponse(null, "Video deleted successfully.", HttpStatus.OK, httpRequest);
     }
 }

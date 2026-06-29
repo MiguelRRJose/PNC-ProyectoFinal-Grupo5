@@ -1,13 +1,14 @@
 package com.example.cursoapp.service.content.impl;
 
-import com.example.cursoapp.domain.entity.Course;
+
+import com.example.cursoapp.domain.entity.catalogue.Course;
 import com.example.cursoapp.domain.entity.content.Module;
 import com.example.cursoapp.dto.content.module.CreateModuleRequest;
 import com.example.cursoapp.dto.content.module.UpdateModuleRequest;
 import com.example.cursoapp.dto.content.module.ModuleResponse;
 import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.content.ModuleMapper;
-import com.example.cursoapp.repository.CourseRepository;
+import com.example.cursoapp.repository.catalogue.CourseRepository;
 import com.example.cursoapp.repository.content.ModuleRepository;
 import com.example.cursoapp.service.content.ModuleService;
 import lombok.RequiredArgsConstructor;

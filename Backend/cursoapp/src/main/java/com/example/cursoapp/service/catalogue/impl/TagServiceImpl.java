@@ -29,7 +29,6 @@ public class TagServiceImpl implements TagService {
         );
     }
 
-    //TODO: When exceptions are done, use one of them here instead of the wrongly used IllegalStateException
     @Override
     @Transactional(readOnly = true)
     public BasicTagResponse findById(UUID id) {

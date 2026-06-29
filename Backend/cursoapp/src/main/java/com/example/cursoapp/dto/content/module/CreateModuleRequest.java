@@ -3,6 +3,8 @@ package com.example.cursoapp.dto.content.module;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -17,5 +19,5 @@ public class CreateModuleRequest {
     private Integer index;
 
     @NotNull(message = "Course ID is required.")
-    private Long courseId;
+    private UUID courseId;
 }

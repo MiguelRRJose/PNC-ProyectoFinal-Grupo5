@@ -1,5 +1,6 @@
 package com.example.cursoapp.domain.entity.content;
 
+import com.example.cursoapp.domain.entity.catalogue.Course;
 import jakarta.persistence.*;
 import lombok.*;
 
