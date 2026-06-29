@@ -3,9 +3,9 @@ spring:
     name: cursoapp
 
   datasource:
-    url: ${DB_URL}
-    username: ${DB_USER}
-    password: ${DB_PASSWORD}
+    url: jdbc:postgresql://157.230.210.59:5432/cursos_online
+    username: admin
+    password: 123secret456!
 
   jpa:
     show-sql: false
@@ -15,7 +15,9 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
 
-  security:
-    user:
-      name: ${SECURITY_USER}
-      password: ${SECURITY_PASSWORD}
+jwt:
+  secret: dGVzdHNlY3JldGtleXRlc3RzZWNyZXRrZXkxMjM0NTY=
+  expiration: 86400000
+
+server:
+  port: 8081
