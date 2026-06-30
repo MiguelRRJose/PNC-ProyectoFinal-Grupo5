@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
@@ -39,15 +40,18 @@ public class SecurityConfig {
                 .authorizeHttpRequests(auth -> auth
                         // Públicos
                         .requestMatchers("/api/auth/**").permitAll()
-                        .requestMatchers("/api/courses/**").permitAll()
-                        .requestMatchers("/api/tags/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/courses/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/tags/**").permitAll()
 
                         // Solo ADMIN
                         .requestMatchers("/api/users/**").hasRole("ADMIN")
                         .requestMatchers("/api/logs/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PATCH, "/api/courses/*/restore").hasRole("ADMIN")
+                        .requestMatchers("/api/tags/**").hasRole("ADMIN")
 
                         // ADMIN o INSTRUCTOR
                         .requestMatchers("/api/coupons/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers("/api/courses/**").hasAnyRole("ADMIN", "INSTRUCTOR")
 
                         // Cualquier autenticado
                         .anyRequest().authenticated()
