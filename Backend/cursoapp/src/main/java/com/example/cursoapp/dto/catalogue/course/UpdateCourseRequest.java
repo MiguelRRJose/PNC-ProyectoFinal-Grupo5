@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotEmpty;
 import lombok.Builder;
 
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public record UpdateCourseRequest(
@@ -15,9 +14,8 @@ public record UpdateCourseRequest(
         Double price,
 
         @NotEmpty(message = "The Course requires at least one tag.")
-        List<UUID> tagIds
+        List<Long> tagIds
 
-        // Los atributos isPublished e isDeleted serán manejados en endpoints
-        // dedicados.
+        // Los atributos isPublished e isDeleted serán manejados en endpoints dedicados.
 ) {
 }

@@ -9,7 +9,6 @@ import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Data
 @Entity
@@ -19,8 +18,8 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Tag {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "name")
     private String name;

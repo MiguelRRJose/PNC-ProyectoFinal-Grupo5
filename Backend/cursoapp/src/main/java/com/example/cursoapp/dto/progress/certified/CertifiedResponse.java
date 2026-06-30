@@ -7,7 +7,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Data
 @Builder
@@ -16,7 +15,7 @@ import java.util.UUID;
 public class CertifiedResponse {
     private Long id;
     private Long userId;
-    private UUID courseId;
+    private Long courseId;
     private Instant certificationDate;
     private CertificateFormat format;
     private String url;

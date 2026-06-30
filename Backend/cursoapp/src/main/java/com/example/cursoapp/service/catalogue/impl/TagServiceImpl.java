@@ -15,7 +15,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -23,7 +22,7 @@ import java.util.UUID;
 public class TagServiceImpl implements TagService {
     private final TagRepository tagRepository;
 
-    private Tag getByIdOrThrow(UUID tagId) {
+    private Tag getByIdOrThrow(Long tagId) {
         return tagRepository.findById(tagId).orElseThrow(
                 () -> new ResourceNotFoundException("Tag not found with id: " + tagId)
         );
@@ -31,7 +30,7 @@ public class TagServiceImpl implements TagService {
 
     @Override
     @Transactional(readOnly = true)
-    public BasicTagResponse findById(UUID id) {
+    public BasicTagResponse findById(Long id) {
         Tag tag = getByIdOrThrow(id);
 
         return TagMapper.toBasicDTO(tag);
@@ -41,7 +40,7 @@ public class TagServiceImpl implements TagService {
     // request es un Administrador o no... Hmmm...
     @Override
     @Transactional(readOnly = true)
-    public AdminTagResponse findByIdAdmin(UUID id) {
+    public AdminTagResponse findByIdAdmin(Long id) {
         Tag tag = getByIdOrThrow(id);
 
         //TODO: Somehow, I will be able to do this properly later
@@ -75,7 +74,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public AdminTagResponse updateTag(UUID id, UpdateTagRequest request) {
+    public AdminTagResponse updateTag(Long id, UpdateTagRequest request) {
         Tag tag = getByIdOrThrow(id);
 
         Tag updatedTag = tagRepository.save(TagMapper.toUpdateEntity(tag, request));
@@ -89,7 +88,7 @@ public class TagServiceImpl implements TagService {
     }
 
     @Override
-    public AdminTagResponse deleteTag(UUID id) {
+    public AdminTagResponse deleteTag(Long id) {
         Tag tag = getByIdOrThrow(id);
 
         //TODO: Here, there needs to be an audit of the deletion of the Tag.

@@ -1,12 +1,13 @@
 package com.example.cursoapp.mapper.catalogue;
 
+import com.example.cursoapp.domain.entity.catalogue.Course;
 import com.example.cursoapp.domain.entity.catalogue.Favorite;
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.dto.catalogue.course.BasicCourseResponse;
 import com.example.cursoapp.dto.catalogue.favorite.AdminFavoriteResponse;
 import com.example.cursoapp.dto.catalogue.favorite.BasicFavoriteResponse;
 import com.example.cursoapp.dto.catalogue.favorite.CreateFavoriteRequest;
-
-import java.util.UUID;
+import com.example.cursoapp.dto.identity.user.UserResponse;
 
 public class FavoriteMapper {
     public static BasicFavoriteResponse toBasicDTO(
@@ -21,23 +22,24 @@ public class FavoriteMapper {
 
     public static AdminFavoriteResponse toAdminDTO(
             Favorite entity,
-            // AdminUserResponse user, //TODO: When the User responses are done, fix this
+            UserResponse user,
             BasicCourseResponse course
     ) {
         return AdminFavoriteResponse.builder()
                 .id(entity.getId())
-                // .user(user)
+                .user(user)
                 .course(course)
                 .build();
     }
 
     public static Favorite toCreateEntity(
             CreateFavoriteRequest createRequest,
-            UUID userId
+            Usuario user,
+            Course course
     ) {
         return Favorite.builder()
-                .userId(userId)
-                .courseId(createRequest.courseId())
+                .user(user)
+                .course(course)
                 .build();
     }
 }

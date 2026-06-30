@@ -18,7 +18,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -73,7 +72,7 @@ public class CouponServiceImpl implements CouponService {
         Usuario creator = usuarioRepository.findById(creatorId)
                 .orElseThrow(() -> new ResourceNotFoundException("User not found with id: " + creatorId));
 
-        Course course = courseRepository.findById(UUID.fromString(request.getCourseId().toString()))
+        Course course = courseRepository.findById(request.getCourseId())
                 .orElseThrow(() -> new ResourceNotFoundException("Course not found with id: " + request.getCourseId()));
 
         Coupon coupon = Coupon.builder()

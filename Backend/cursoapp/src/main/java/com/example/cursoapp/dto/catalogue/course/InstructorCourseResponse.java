@@ -5,12 +5,11 @@ import lombok.Builder;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public record InstructorCourseResponse(
         // Datos del curso para el instructor
-        UUID id,
+        Long id,
         String name,
         Double price,
         List<BasicTagResponse> tags,
@@ -24,11 +23,11 @@ public record InstructorCourseResponse(
 
         // Estadísticas públicas
         Double averageRating,
-        Integer reviewCount,
+        Long reviewCount,
 
         // Estadísticas propias del instructor
-        Integer enrollmentCount,
-        Integer certifiedCount,
+        Long enrollmentCount,
+        Long certifiedCount,
         Double totalRevenue
 ) {
 }

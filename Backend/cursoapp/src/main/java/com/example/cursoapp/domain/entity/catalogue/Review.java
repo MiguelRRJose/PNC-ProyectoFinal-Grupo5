@@ -1,5 +1,6 @@
 package com.example.cursoapp.domain.entity.catalogue;
 
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -8,7 +9,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Entity
 @Table(name = "review")
@@ -18,11 +18,11 @@ import java.util.UUID;
 @NoArgsConstructor
 public class Review {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "score")
-    private Integer score;
+    private Long score;
 
     @Column(name = "comment")
     private String comment;
@@ -31,11 +31,13 @@ public class Review {
     @Column(name = "created_at", updatable = false)
     private Instant createdAt;
 
-    @Column(name = "user_id")
-    private UUID userId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private Usuario user;
 
-    @Column(name = "course_id")
-    private UUID courseId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "course_id", nullable = false)
+    private Course course;
 
     @Builder.Default
     @Column(name = "is_updated")

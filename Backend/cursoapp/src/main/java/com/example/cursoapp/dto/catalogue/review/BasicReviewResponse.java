@@ -1,18 +1,18 @@
 package com.example.cursoapp.dto.catalogue.review;
 
+import com.example.cursoapp.dto.identity.user.UserResponse;
 import lombok.Builder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Builder
 public record BasicReviewResponse(
-        UUID id,
+        Long id,
         String username,
-        Integer score,
+        Long score,
         String comment,
         Instant createdAt,
-        // BasicUserResponse user, //TODO: Implementar una vez hecho los usuarios
+        UserResponse user,
 
         // Supongo que los Reviews solo serán mostrados donde sea que se muestre el curso.
         // Por lo tanto, no es necesario que se muestre el ID o un BasicResponse del curso

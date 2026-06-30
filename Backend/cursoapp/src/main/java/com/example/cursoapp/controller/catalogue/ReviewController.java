@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/reviews")
@@ -35,7 +34,7 @@ public class ReviewController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GeneralResponse> getById(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> getById(@PathVariable Long id) {
         return buildResponse(
                 reviewService.getBasicReviewById(id),
                 "Review successfully found.",
@@ -44,7 +43,7 @@ public class ReviewController {
     }
 
     @GetMapping("/by-course")
-    public ResponseEntity<GeneralResponse> getByCourseId(@RequestParam UUID courseId) {
+    public ResponseEntity<GeneralResponse> getByCourseId(@RequestParam Long courseId) {
         return buildResponse(
                 reviewService.getAllReviewsByCourse(courseId),
                 "Reviews successfully found.",
@@ -56,7 +55,7 @@ public class ReviewController {
     public ResponseEntity<GeneralResponse> createReview(@RequestBody CreateReviewRequest request) {
 
         //TODO: Get the user ID somehow using the JWT context
-        UUID userId = null;
+        Long userId = null;
 
         return buildResponse(
                 reviewService.createReview(request, userId),
@@ -66,7 +65,7 @@ public class ReviewController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GeneralResponse> updateReview(@PathVariable UUID id, @RequestBody UpdateReviewRequest request) {
+    public ResponseEntity<GeneralResponse> updateReview(@PathVariable Long id, @RequestBody UpdateReviewRequest request) {
         return buildResponse(
                 reviewService.updateReview(request, id),
                 "Review successfully updated.",
@@ -75,7 +74,7 @@ public class ReviewController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeneralResponse> deleteReview(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> deleteReview(@PathVariable Long id) {
         return buildResponse(
                 reviewService.deleteReview(id),
                 "Review successfully deleted.",

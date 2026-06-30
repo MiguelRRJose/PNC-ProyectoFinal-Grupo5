@@ -17,7 +17,6 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
@@ -27,13 +26,13 @@ public class CourseServiceImpl implements CourseService {
     private final TagRepository tagRepository;
     private final ReviewRepository reviewRepository;
 
-    private Course getOrThrowById(UUID courseId) {
+    private Course getOrThrowById(Long courseId) {
         return courseRepository.findById(courseId).orElseThrow(
                 () -> new ResourceNotFoundException("Course not found with id: " + courseId)
         );
     }
 
-    private Pair<Double, Long> getBasicStats(UUID courseId) {
+    private Pair<Double, Long> getBasicStats(Long courseId) {
         List<Review> reviews = reviewRepository.findByCourseId(courseId);
         long reviewCount = reviews.size();
         long totalScore = 0L;
@@ -48,7 +47,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public BasicCourseResponse findBasicCourseById(UUID id) {
+    public BasicCourseResponse findBasicCourseById(Long id) {
         Course course = getOrThrowById(id);
         Pair<Double, Long> stats = getBasicStats(id);
 
@@ -64,12 +63,12 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public InstructorCourseResponse findInstructorCourseById(UUID id) {
+    public InstructorCourseResponse findInstructorCourseById(Long id) {
         Course course = getOrThrowById(id);
         Pair<Double, Long> stats = getBasicStats(id);
 
         //TODO: I have to somehow count how many users bought the course, how many have completed it, and well, how much revenue the Instructor got of it
-        Integer enrollmentCount = null, certifiedCount = null;
+        Long enrollmentCount = null, certifiedCount = null;
         Double totalRevenue = null;
 
         if (!course.getIsDeleted()) {
@@ -77,7 +76,7 @@ public class CourseServiceImpl implements CourseService {
                     course,
                     course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                     stats.getFirst(),
-                    stats.getSecond().intValue(),
+                    stats.getSecond(),
                     enrollmentCount,
                     certifiedCount,
                     totalRevenue
@@ -87,26 +86,22 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public AdminCourseResponse findAdminCourseById(UUID id) {
+    public AdminCourseResponse findAdminCourseById(Long id) {
         Course course = getOrThrowById(id);
         Pair<Double, Long> stats = getBasicStats(id);
 
         //TODO: I have to somehow count how many users bought the course, how many have completed it, and well, how much revenue the Instructor got of it
-        Integer enrollmentCount = null, certifiedCount = null;
+        Long enrollmentCount = null, certifiedCount = null;
         Double totalRevenue = null;
-        Instant lastActionAt = null;
-        String lastActionBy = null;
 
         return CourseMapper.toAdminDTO(
                     course,
                     course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                     stats.getFirst(),
-                    stats.getSecond().intValue(),
+                    stats.getSecond(),
                     enrollmentCount,
                     certifiedCount,
-                    totalRevenue,
-                    lastActionAt,
-                    lastActionBy
+                    totalRevenue
         );
     }
 
@@ -144,12 +139,10 @@ public class CourseServiceImpl implements CourseService {
                                 course,
                                 course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                                 stats.getFirst(),
-                                stats.getSecond().intValue(),
+                                stats.getSecond(),
                                 null, // enrollmentCount
                                 null, // certifiedCount
-                                null, // totalRevenue
-                                null, // lastActionAt
-                                null  // lastActionBy
+                                null // totalRevenue
                         );
                 }).toList();
     }
@@ -158,7 +151,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<BasicCourseResponse> getAllCoursesByTag(UUID tagId) {
+    public List<BasicCourseResponse> getAllCoursesByTag(Long tagId) {
         List<Course> courses = courseRepository.findCoursesByTagId(tagId);
 
         return courses.stream().map(
@@ -176,7 +169,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<AdminCourseResponse> getAllAdminCoursesByTag(UUID tagId) {
+    public List<AdminCourseResponse> getAllAdminCoursesByTag(Long tagId) {
         List<Course> courses = courseRepository.findCoursesByTagId(tagId);
 
         //TODO: Change this later to include the stats
@@ -188,19 +181,17 @@ public class CourseServiceImpl implements CourseService {
                             course,
                             course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                             stats.getFirst(),
-                            stats.getSecond().intValue(),
+                            stats.getSecond(),
                             null, // enrollmentCount
                             null, // certifiedCount
-                            null, // totalRevenue
-                            null, // lastActionAt
-                            null  // lastActionBy
+                            null // totalRevenue
                     );
                 }).toList();
     }
 
     @Override
     @Transactional(readOnly = true)
-    public List<BasicCourseResponse> getAllCoursesByInstructor(UUID instructorId) {
+    public List<BasicCourseResponse> getAllCoursesByInstructor(Long instructorId) {
         List<Course> courses = courseRepository.findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(instructorId);
 
         return courses.stream().map(
@@ -218,7 +209,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<AdminCourseResponse> getAllAdminCoursesByInstructor(UUID instructorId) {
+    public List<AdminCourseResponse> getAllAdminCoursesByInstructor(Long instructorId) {
         List<Course> courses = courseRepository.findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(instructorId);
 
         return courses.stream().map(
@@ -229,12 +220,10 @@ public class CourseServiceImpl implements CourseService {
                             course,
                             course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                             stats.getFirst(),
-                            stats.getSecond().intValue(),
+                            stats.getSecond(),
                             null, // enrollmentCount
                             null, // certifiedCount
-                            null, // totalRevenue
-                            null, // lastActionAt
-                            null  // lastActionBy
+                            null // totalRevenue
                     );
                 }).toList();
     }
@@ -252,16 +241,12 @@ public class CourseServiceImpl implements CourseService {
         return CourseMapper.toInstructorDTO(
                 course,
                 course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
-                0.0,
-                0,
-                0,
-                0,
-                0.0
+                0.0, 0L, 0L, 0L, 0.0
         );
     }
 
     @Override
-    public InstructorCourseResponse updateCourse(UUID courseId, UpdateCourseRequest request) {
+    public InstructorCourseResponse updateCourse(Long courseId, UpdateCourseRequest request) {
         Course course = getOrThrowById(courseId);
         CourseMapper.toUpdateEntity(course, request,
                 request.tagIds().stream().map((tagId) ->
@@ -278,7 +263,7 @@ public class CourseServiceImpl implements CourseService {
                 course,
                 course.getTags().stream().map(TagMapper::toBasicDTO).toList(),
                 stats.getFirst(),
-                stats.getSecond().intValue(),
+                stats.getSecond(),
                 null, // enrollmentCount
                 null, // certifiedCount
                 null  // totalRevenue
@@ -286,7 +271,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public BasicCourseResponse publishCourse(UUID id) {
+    public BasicCourseResponse publishCourse(Long id) {
         Course course = getOrThrowById(id);
         course.setIsPublished(true);
         courseRepository.save(course);
@@ -302,7 +287,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public BasicCourseResponse unpublishCourse(UUID id) {
+    public BasicCourseResponse unpublishCourse(Long id) {
         Course course = getOrThrowById(id);
         course.setIsPublished(false);
         courseRepository.save(course);
@@ -318,7 +303,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public BasicCourseResponse deleteCourse(UUID id) {
+    public BasicCourseResponse deleteCourse(Long id) {
         Course course = getOrThrowById(id);
         course.setIsDeleted(true);
         courseRepository.save(course);
@@ -334,7 +319,7 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public BasicCourseResponse restoreCourse(UUID id) {
+    public BasicCourseResponse restoreCourse(Long id) {
         Course course = getOrThrowById(id);
         course.setIsDeleted(false);
         courseRepository.save(course);

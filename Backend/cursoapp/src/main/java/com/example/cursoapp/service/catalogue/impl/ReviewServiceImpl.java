@@ -6,6 +6,7 @@ import com.example.cursoapp.dto.catalogue.review.CreateReviewRequest;
 import com.example.cursoapp.dto.catalogue.review.UpdateReviewRequest;
 import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.catalogue.ReviewMapper;
+import com.example.cursoapp.repository.catalogue.CourseRepository;
 import com.example.cursoapp.repository.catalogue.ReviewRepository;
 import com.example.cursoapp.service.catalogue.ReviewService;
 import lombok.RequiredArgsConstructor;
@@ -13,24 +14,24 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
+    private final CourseRepository courseRepository;
 
     // TODO: When users are done, get the username for the review
     //private final UserRepository userRepository;
 
-    public Review getByIdOrThrow(UUID reviewId) {
+    public Review getByIdOrThrow(Long reviewId) {
         return reviewRepository.findById(reviewId)
                 .orElseThrow(() -> new ResourceNotFoundException("Review not found"));
     }
 
     @Override
-    public BasicReviewResponse getBasicReviewById(UUID reviewId) {
+    public BasicReviewResponse getBasicReviewById(Long reviewId) {
         Review review = getByIdOrThrow(reviewId);
 
         //TODO: Here, change the null to the commented code, make necessary changes for it to work
@@ -41,7 +42,7 @@ public class ReviewServiceImpl implements ReviewService {
 
 
     @Override
-    public List<BasicReviewResponse> getAllReviewsByCourse(UUID courseId) {
+    public List<BasicReviewResponse> getAllReviewsByCourse(Long courseId) {
         List<Review> courseReviews = reviewRepository.findByCourseId(courseId);
 
         return courseReviews.stream().map(review ->
@@ -50,19 +51,19 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public BasicReviewResponse createReview(CreateReviewRequest request, UUID userId) {
+    public BasicReviewResponse createReview(CreateReviewRequest request, Long userId) {
         //TODO: Later add the logic to get the username
 
         // String username = userRepository.getById(userId).getUsername();
         Review review = reviewRepository.save(
-                ReviewMapper.toCreateEntity(null, request)
+                ReviewMapper.toCreateEntity(request, null, courseRepository.getReferenceById(request.courseId()))
         );
 
         return ReviewMapper.toBasicDTO(review, null);
     }
 
     @Override
-    public BasicReviewResponse updateReview(UpdateReviewRequest request, UUID reviewId) {
+    public BasicReviewResponse updateReview(UpdateReviewRequest request, Long reviewId) {
         Review review = ReviewMapper.toUpdateEntity(getByIdOrThrow(reviewId), request);
 
         return ReviewMapper.toBasicDTO(
@@ -72,7 +73,7 @@ public class ReviewServiceImpl implements ReviewService {
     }
 
     @Override
-    public BasicReviewResponse deleteReview(UUID reviewId) {
+    public BasicReviewResponse deleteReview(Long reviewId) {
         Review review = getByIdOrThrow(reviewId);
         reviewRepository.delete(review);
 

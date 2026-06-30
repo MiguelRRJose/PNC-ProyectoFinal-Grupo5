@@ -1,16 +1,16 @@
 package com.example.cursoapp.dto.catalogue.course;
 
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
+import com.example.cursoapp.dto.identity.user.UserResponse;
 import lombok.Builder;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public record AdminCourseResponse (
         // Datos del curso para el instructor
-        UUID id,
+        Long id,
         String name,
         Double price,
         List<BasicTagResponse> tags,
@@ -19,19 +19,15 @@ public record AdminCourseResponse (
         // Datos administrativos, supongo
         Boolean isPublished,
         Boolean isDeleted,
-        // Para que se entere el instructor si un administrador ha eliminado su curso,
-        // aunque de momento no pueda hacer nada al respecto.
 
         // Estadísticas del curso
         Double averageRating,
-        Integer reviewCount,
-        Integer enrollmentCount,
-        Integer certifiedCount,
+        Long reviewCount,
+        Long enrollmentCount,
+        Long certifiedCount,
         Double totalRevenue,
 
         // Auditoría
-        // AdminUserResponse instructor, //TODO: Dedicated response for admins needed
-        Instant lastActionAt,
-        String lastActionBy
+        UserResponse instructor
 ) {
 }

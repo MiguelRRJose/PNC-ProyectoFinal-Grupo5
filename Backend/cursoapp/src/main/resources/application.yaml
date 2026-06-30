@@ -3,21 +3,21 @@ spring:
     name: cursoapp
 
   datasource:
-    url: jdbc:postgresql://157.230.210.59:5432/cursos_online
-    username: admin
-    password: 123secret456!
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
 
   jpa:
-    show-sql: false
+    show-sql: ${JPA_SHOW_SQL}
     hibernate:
-      ddl-auto: update
+      ddl-auto: ${HIBERNATE_DDL_AUTO}
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+        dialect: ${HIBERNATE_DIALECT}
 
 jwt:
-  secret: dGVzdHNlY3JldGtleXRlc3RzZWNyZXRrZXkxMjM0NTY=
+  secret: {JWT_SECRET}
   expiration: 86400000
 
 server:
-  port: 8081
+  port: ${SERVER_PORT}

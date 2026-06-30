@@ -7,7 +7,7 @@ import org.hibernate.validator.constraints.Range;
 @Builder
 public record UpdateReviewRequest(
         @Range(min = 1, max = 5, message = "The score must be between 1 and 5.")
-        Integer score,
+        Long score,
 
         @NotBlank(message = "The comment cannot be empty.")
         String comment

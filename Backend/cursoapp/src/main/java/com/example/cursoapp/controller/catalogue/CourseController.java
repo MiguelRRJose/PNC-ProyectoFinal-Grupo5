@@ -4,7 +4,6 @@ import com.example.cursoapp.dto.GeneralResponse;
 import com.example.cursoapp.dto.catalogue.course.CreateCourseRequest;
 import com.example.cursoapp.dto.catalogue.course.UpdateCourseRequest;
 import com.example.cursoapp.service.catalogue.CourseService;
-import com.example.cursoapp.service.catalogue.impl.CourseServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 //TODO: Modify the endpoints so that they return an appropriate response based on the User's role
 
@@ -47,7 +45,7 @@ public class CourseController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GeneralResponse> getById(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> getById(@PathVariable Long id) {
         return buildResponse(
                 courseService.findBasicCourseById(id),
                 "Course successfully found.",
@@ -56,7 +54,7 @@ public class CourseController {
     }
 
     @GetMapping("/by-tag")
-    public ResponseEntity<GeneralResponse> getByTagId(@RequestParam UUID tagId) {
+    public ResponseEntity<GeneralResponse> getByTagId(@RequestParam Long tagId) {
         return buildResponse(
                 courseService.getAllCoursesByTag(tagId),
                 "Courses successfully found.",
@@ -67,7 +65,7 @@ public class CourseController {
     // This is mostly for general access? Admins should get more info.
 
     @GetMapping("/by-instructor")
-    public ResponseEntity<GeneralResponse> getByInstructorId(@RequestParam UUID instructorId) {
+    public ResponseEntity<GeneralResponse> getByInstructorId(@RequestParam Long instructorId) {
         return buildResponse(
                 courseService.getAllCoursesByInstructor(instructorId),
                 "Courses successfully found.",
@@ -87,7 +85,7 @@ public class CourseController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GeneralResponse> updateCourse(@PathVariable UUID id, @RequestBody @Valid UpdateCourseRequest request) {
+    public ResponseEntity<GeneralResponse> updateCourse(@PathVariable Long id, @RequestBody @Valid UpdateCourseRequest request) {
         return buildResponse(
                 courseService.updateCourse(id, request),
                 "Course successfully updated.",
@@ -96,7 +94,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}/publish")
-    public ResponseEntity<GeneralResponse> publishCourse(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> publishCourse(@PathVariable Long id) {
         return buildResponse(
                 courseService.publishCourse(id),
                 "Course successfully published.",
@@ -105,7 +103,7 @@ public class CourseController {
     }
 
     @PatchMapping("/{id}/unpublish")
-    public ResponseEntity<GeneralResponse> unpublishCourse(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> unpublishCourse(@PathVariable Long id) {
         return buildResponse(
                 courseService.unpublishCourse(id),
                 "Course successfully pulled out of catalogue.",
@@ -114,7 +112,7 @@ public class CourseController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeneralResponse> deleteCourse(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> deleteCourse(@PathVariable Long id) {
         return buildResponse(
                 courseService.deleteCourse(id),
                 "Course successfully removed. The course is still stored in the database for audit purposes.",
@@ -125,7 +123,7 @@ public class CourseController {
     // This thing only Admins should be able to do it
 
     @PatchMapping("/{id}/restore")
-    public ResponseEntity<GeneralResponse> restoreCourse(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> restoreCourse(@PathVariable Long id) {
         return buildResponse(
                 courseService.restoreCourse(id),
                 "Course successfully restored.",

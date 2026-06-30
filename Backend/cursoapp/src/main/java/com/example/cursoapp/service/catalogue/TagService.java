@@ -6,18 +6,17 @@ import com.example.cursoapp.dto.catalogue.tag.CreateTagRequest;
 import com.example.cursoapp.dto.catalogue.tag.UpdateTagRequest;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface TagService {
-    BasicTagResponse findById(UUID id);
+    BasicTagResponse findById(Long id);
 
-    AdminTagResponse findByIdAdmin(UUID id);
+    AdminTagResponse findByIdAdmin(Long id);
 
     List<BasicTagResponse> getAllTags();
 
     AdminTagResponse createTag(CreateTagRequest request);
 
-    AdminTagResponse updateTag(UUID id, UpdateTagRequest request);
+    AdminTagResponse updateTag(Long id, UpdateTagRequest request);
 
-    AdminTagResponse deleteTag(UUID id);
+    AdminTagResponse deleteTag(Long id);
 }

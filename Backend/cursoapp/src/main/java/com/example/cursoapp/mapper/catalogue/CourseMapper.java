@@ -31,9 +31,9 @@ public class CourseMapper {
             Course course,
             List<BasicTagResponse> tags,
             Double averageRating,
-            Integer reviewCount,
-            Integer enrollmentCount,
-            Integer certifiedCount,
+            Long reviewCount,
+            Long enrollmentCount,
+            Long certifiedCount,
             Double totalRevenue
 
     ) {
@@ -57,12 +57,10 @@ public class CourseMapper {
             Course course,
             List<BasicTagResponse> tags,
             Double averageRating,
-            Integer reviewCount,
-            Integer enrollmentCount,
-            Integer certifiedCount,
-            Double totalRevenue,
-            Instant lastActionAt,
-            String lastActionBy
+            Long reviewCount,
+            Long enrollmentCount,
+            Long certifiedCount,
+            Double totalRevenue
     ) {
         return AdminCourseResponse.builder()
                 .id(course.getId())
@@ -78,8 +76,6 @@ public class CourseMapper {
                 .certifiedCount(certifiedCount)
                 .totalRevenue(totalRevenue)
                 //.instructor() //TODO: Add instructor info when AdminUserResponse is ready
-                .lastActionAt(lastActionAt)
-                .lastActionBy(lastActionBy)
                 .build();
     }
 

@@ -5,12 +5,11 @@ import com.example.cursoapp.dto.catalogue.review.CreateReviewRequest;
 import com.example.cursoapp.dto.catalogue.review.UpdateReviewRequest;
 
 import java.util.List;
-import java.util.UUID;
 
 public interface ReviewService{
-    BasicReviewResponse getBasicReviewById(UUID reviewId);
-    List<BasicReviewResponse> getAllReviewsByCourse(UUID courseId);
-    BasicReviewResponse createReview(CreateReviewRequest request, UUID userId);
-    BasicReviewResponse updateReview(UpdateReviewRequest request, UUID reviewId);
-    BasicReviewResponse deleteReview(UUID reviewId);
+    BasicReviewResponse getBasicReviewById(Long reviewId);
+    List<BasicReviewResponse> getAllReviewsByCourse(Long courseId);
+    BasicReviewResponse createReview(CreateReviewRequest request, Long userId);
+    BasicReviewResponse updateReview(UpdateReviewRequest request, Long reviewId);
+    BasicReviewResponse deleteReview(Long reviewId);
 }

@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/favorites")
@@ -34,7 +33,7 @@ public class FavoriteController {
 
     @GetMapping("/by-user")
     public ResponseEntity<GeneralResponse> getFavoritesByUser() {
-        UUID userId = null;
+        Long userId = null;
         return buildResponse(
                 //TODO: Then again, JWT to get the userId
                 favoriteService.getAllFavoritesByUser(userId),
@@ -45,7 +44,7 @@ public class FavoriteController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> addFavorite(@RequestBody CreateFavoriteRequest request) {
-        UUID userId = null; //TODO: Another temporary null that needs fixing
+        Long userId = null; //TODO: Another temporary null that needs fixing
         return buildResponse(
                 favoriteService.createFavorite(request, userId),
                 "Favorite successfully added.",
@@ -54,7 +53,7 @@ public class FavoriteController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<GeneralResponse> deleteFavorite(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> deleteFavorite(@PathVariable Long id) {
         return buildResponse(
                 favoriteService.deleteFavorite(id),
                 "Favorite successfully deleted.",

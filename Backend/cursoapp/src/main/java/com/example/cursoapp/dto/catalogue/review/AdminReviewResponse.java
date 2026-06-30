@@ -1,23 +1,20 @@
 package com.example.cursoapp.dto.catalogue.review;
 
 import com.example.cursoapp.dto.catalogue.course.BasicCourseResponse;
+import com.example.cursoapp.dto.identity.user.UserResponse;
 import lombok.Builder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Builder
 public record AdminReviewResponse(
-        UUID id,
-        Integer score,
+        Long id,
+        Long score,
         String comment,
         Instant createdAt,
         Boolean isUpdated,
 
-        // AdminUserResponse userId,
-        BasicCourseResponse course,
-
-        Instant lastActionAt,
-        String lastActionBy
+        UserResponse userId,
+        BasicCourseResponse course
 ) {
 }

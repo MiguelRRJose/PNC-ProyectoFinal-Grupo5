@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.Instant;
-import java.util.UUID;
 
 // TODO: Apply logic for role based responses later
 
@@ -45,7 +44,7 @@ public class TagController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GeneralResponse> getById(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> getById(@PathVariable Long id) {
         return buildResponse(
                 tagService.findById(id),
                 "Tag successfully found.",
@@ -65,7 +64,7 @@ public class TagController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<GeneralResponse> updateTag(@PathVariable UUID id, @RequestBody UpdateTagRequest request) {
+    public ResponseEntity<GeneralResponse> updateTag(@PathVariable Long id, @RequestBody UpdateTagRequest request) {
         return buildResponse(
                 tagService.updateTag(id, request),
                 "Tag successfully updated.",
@@ -74,7 +73,7 @@ public class TagController {
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<GeneralResponse> deleteTag(@PathVariable UUID id) {
+    public ResponseEntity<GeneralResponse> deleteTag(@PathVariable Long id) {
         return buildResponse(
                 tagService.deleteTag(id),
                 "Tag successfully deleted.",

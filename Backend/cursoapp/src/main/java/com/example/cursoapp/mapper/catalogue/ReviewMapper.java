@@ -1,6 +1,8 @@
 package com.example.cursoapp.mapper.catalogue;
 
+import com.example.cursoapp.domain.entity.catalogue.Course;
 import com.example.cursoapp.domain.entity.catalogue.Review;
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.dto.catalogue.course.BasicCourseResponse;
 import com.example.cursoapp.dto.catalogue.review.AdminReviewResponse;
 import com.example.cursoapp.dto.catalogue.review.BasicReviewResponse;
@@ -27,9 +29,7 @@ public class ReviewMapper {
     public static AdminReviewResponse toAdminDTO (
             Review review,
             // AdminUserResponse user,
-            BasicCourseResponse course,
-            Instant lastActionAt,
-            String lastActionBy
+            BasicCourseResponse course
 
     ) {
         return AdminReviewResponse.builder()
@@ -40,20 +40,19 @@ public class ReviewMapper {
                 .isUpdated(review.getIsUpdated())
                 // .userId(user)
                 .course(course)
-                .lastActionAt(lastActionAt)
-                .lastActionBy(lastActionBy)
                 .build();
     }
 
     public static Review toCreateEntity (
-            String username, // Hay que obtener el userId desde el servicio
-            CreateReviewRequest createRequest
+            CreateReviewRequest createRequest,
+            Usuario user, // Hay que obtener el usuario desde el servicio
+            Course course // Hay que obtener el curso desde el servicio
     ) {
         return Review.builder()
                 .score(createRequest.score())
                 .comment(createRequest.comment())
-                // .userId(userId)
-                .courseId(createRequest.courseId())
+                .user(user)
+                .course(course)
                 .build();
     }
 

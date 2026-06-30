@@ -6,7 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.Instant;
-import java.util.UUID;
 
 @Data
 @Builder
@@ -16,7 +15,7 @@ public class CouponResponse {
     private Long id;
     private String code;
     private Double discount;
-    private UUID courseId;  // ← cambió de Long a UUID
+    private Long courseId;
     private Long creatorId;
     private Instant createdAt;
     private Instant expirationDate;

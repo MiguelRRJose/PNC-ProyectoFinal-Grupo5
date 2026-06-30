@@ -7,7 +7,6 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Builder;
 
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public record CreateCourseRequest (
@@ -24,7 +23,7 @@ public record CreateCourseRequest (
 
         @NotNull(message = "No Tag list has been received.")
         @NotEmpty(message = "The Course requires at least one tag.")
-        List<UUID> tagIds
+        List<Long> tagIds
         // It sure would suck to do the integration for this one!
 ) {
 }

@@ -1,19 +1,20 @@
 package com.example.cursoapp.dto.catalogue.course;
 
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
+import com.example.cursoapp.dto.identity.user.UserResponse;
 import lombok.Builder;
 
 import java.time.Instant;
 import java.util.List;
-import java.util.UUID;
 
 @Builder
 public record BasicCourseResponse(
-        UUID id,
+        Long id,
         String name,
         Double price,
         List<BasicTagResponse> tags,
-        // BasicUserResponse instructor, // TODO: A basic response with minimum info needed
+        UserResponse instructor,
         Instant createdAt,
 
         // Estadísticas públicas, cualquiera puede verlas

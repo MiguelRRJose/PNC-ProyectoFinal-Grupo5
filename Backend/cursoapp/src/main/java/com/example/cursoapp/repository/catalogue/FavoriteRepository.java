@@ -4,8 +4,7 @@ import com.example.cursoapp.domain.entity.catalogue.Favorite;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
-import java.util.UUID;
 
-public interface FavoriteRepository extends JpaRepository<Favorite, UUID> {
-    List<Favorite> findFavoriteByCourseIdEquals(UUID courseId);
+public interface FavoriteRepository extends JpaRepository<Favorite, Long> {
+    List<Favorite> findFavoriteByCourseIdEquals(Long courseId);
 }
