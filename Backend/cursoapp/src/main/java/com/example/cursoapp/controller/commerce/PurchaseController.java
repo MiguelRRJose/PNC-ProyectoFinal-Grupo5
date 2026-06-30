@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.cursoapp.config.UsuarioDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
 
@@ -73,7 +75,8 @@ public class PurchaseController {
     // Las compras no se borran ni modifican — solo se crean
     @PostMapping
     public ResponseEntity<GeneralResponse> createPurchase(@RequestBody @Valid CreatePurchaseRequest request) {
-        Long userId = null; // TODO: obtener del contexto JWT
+        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = usuarioDetails.getId();
         return buildResponse(
                 purchaseService.createPurchase(request, userId),
                 "Purchase successfully completed.",

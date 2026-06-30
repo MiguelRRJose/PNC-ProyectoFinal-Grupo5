@@ -8,6 +8,8 @@ import com.example.cursoapp.exceptions.ResourceNotFoundException;
 import com.example.cursoapp.mapper.catalogue.ReviewMapper;
 import com.example.cursoapp.repository.catalogue.CourseRepository;
 import com.example.cursoapp.repository.catalogue.ReviewRepository;
+import com.example.cursoapp.repository.identity.UsuarioRepository;
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.service.catalogue.ReviewService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -21,9 +23,7 @@ import java.util.List;
 public class ReviewServiceImpl implements ReviewService {
     private final ReviewRepository reviewRepository;
     private final CourseRepository courseRepository;
-
-    // TODO: When users are done, get the username for the review
-    //private final UserRepository userRepository;
+    private final UsuarioRepository usuarioRepository;
 
     public Review getByIdOrThrow(Long reviewId) {
         return reviewRepository.findById(reviewId)
@@ -33,43 +33,39 @@ public class ReviewServiceImpl implements ReviewService {
     @Override
     public BasicReviewResponse getBasicReviewById(Long reviewId) {
         Review review = getByIdOrThrow(reviewId);
-
-        //TODO: Here, change the null to the commented code, make necessary changes for it to work
-        String username = null; // String username = userRepository.getById(review.getUserId()).getUsername();
-
+        String username = review.getUser() != null ? review.getUser().getUsername() : null;
         return ReviewMapper.toBasicDTO(review, username);
     }
-
 
     @Override
     public List<BasicReviewResponse> getAllReviewsByCourse(Long courseId) {
         List<Review> courseReviews = reviewRepository.findByCourseId(courseId);
 
         return courseReviews.stream().map(review ->
-                        ReviewMapper.toBasicDTO(review, null) //TODO: Later add the logic to get the usernames
+                ReviewMapper.toBasicDTO(review, review.getUser() != null ? review.getUser().getUsername() : null)
         ).toList();
     }
 
     @Override
     public BasicReviewResponse createReview(CreateReviewRequest request, Long userId) {
-        //TODO: Later add the logic to get the username
-
-        // String username = userRepository.getById(userId).getUsername();
+        Usuario user = usuarioRepository.findById(userId)
+                .orElseThrow(() -> new ResourceNotFoundException("User not found"));
         Review review = reviewRepository.save(
-                ReviewMapper.toCreateEntity(request, null, courseRepository.getReferenceById(request.courseId()))
+                ReviewMapper.toCreateEntity(request, user, courseRepository.getReferenceById(request.courseId()))
         );
 
-        return ReviewMapper.toBasicDTO(review, null);
+        return ReviewMapper.toBasicDTO(review, user.getUsername());
     }
 
     @Override
     public BasicReviewResponse updateReview(UpdateReviewRequest request, Long reviewId) {
         Review review = ReviewMapper.toUpdateEntity(getByIdOrThrow(reviewId), request);
+        Review saved = reviewRepository.save(review);
 
         return ReviewMapper.toBasicDTO(
-                reviewRepository.save(review),
-                null // userRepository.getById(userId).getUsername()
-        ); //TODO: I also need the username here
+                saved,
+                saved.getUser() != null ? saved.getUser().getUsername() : null
+        );
     }
 
     @Override
@@ -78,8 +74,8 @@ public class ReviewServiceImpl implements ReviewService {
         reviewRepository.delete(review);
 
         return ReviewMapper.toBasicDTO(
-                reviewRepository.save(review),
-                null // userRepository.getById(userId).getUsername()
-        ); //TODO: And here too, I need the username
+                review,
+                review.getUser() != null ? review.getUser().getUsername() : null
+        );
     }
 }

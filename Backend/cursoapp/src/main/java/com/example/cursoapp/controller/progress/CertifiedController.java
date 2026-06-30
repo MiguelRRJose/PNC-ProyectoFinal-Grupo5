@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.cursoapp.config.UsuarioDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
 
@@ -62,7 +64,8 @@ public class CertifiedController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> createCertified(@RequestBody @Valid CreateCertifiedRequest request) {
-        Long userId = null; // TODO: obtener del contexto JWT
+        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = usuarioDetails.getId();
         return buildResponse(
                 certifiedService.createCertified(request, userId),
                 "Certificate successfully issued.",

@@ -1,6 +1,6 @@
 package com.example.cursoapp.config;
 
-import com.example.cursoapp.service.identity.UsuarioDetailsService;
+import com.example.cursoapp.service.identity.impl.UsuarioDetailsService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

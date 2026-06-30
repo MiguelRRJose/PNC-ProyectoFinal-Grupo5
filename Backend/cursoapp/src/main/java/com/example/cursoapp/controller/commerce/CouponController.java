@@ -10,6 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.cursoapp.config.UsuarioDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
 
@@ -73,7 +75,8 @@ public class CouponController {
     // Solo INSTRUCTOR o ADMIN deberían poder crear cupones
     @PostMapping
     public ResponseEntity<GeneralResponse> createCoupon(@RequestBody @Valid CreateCouponRequest request) {
-        Long creatorId = null; // TODO: obtener del contexto JWT
+        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long creatorId = usuarioDetails.getId();
         return buildResponse(
                 couponService.createCoupon(request, creatorId),
                 "Coupon successfully created.",

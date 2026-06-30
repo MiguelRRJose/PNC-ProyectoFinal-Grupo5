@@ -1,6 +1,7 @@
-package com.example.cursoapp.service.identity;
+package com.example.cursoapp.service.identity.impl;
 
 
+import com.example.cursoapp.config.UsuarioDetails;
 import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.repository.identity.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
