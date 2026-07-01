@@ -1,0 +1,1928 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2026-06-30T21:55:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "wrk_cursoapp",
+      "parentId": null,
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "CursoApp API",
+      "description": "API endpoints collection for CursoApp (Online Course Platform). Exempts Logs and Certificates.",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_cursoapp",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080",
+        "token": "PASTE_YOUR_JWT_TOKEN_HERE"
+      },
+      "dataPropertyOrder": {
+        "&": [
+          "base_url",
+          "token"
+        ]
+      },
+      "color": null,
+      "isPrivate": false,
+      "_type": "environment"
+    },
+    {
+      "_id": "fld_auth",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Authentication",
+      "description": "Authentication and user registration endpoints",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_users",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Users",
+      "description": "User management endpoints (Requires ADMIN role)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_courses",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Courses",
+      "description": "Course management and catalogue endpoints (GET is public, POST/PUT/PATCH/DELETE require appropriate roles)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_tags",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Tags",
+      "description": "Tag catalogue endpoints (GET is public, other operations require ADMIN)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_modules",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Modules",
+      "description": "Course module structure endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_lections",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Lections",
+      "description": "Module lesson/lection endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_videos",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Videos",
+      "description": "Lection video endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_files",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Files",
+      "description": "Lection attachment files endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_questions",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Questions",
+      "description": "Course lection Q&A questions endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_answers",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Answers",
+      "description": "Q&A answers endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_completions",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Completions",
+      "description": "User lection progress and completions tracking (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_reviews",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Reviews",
+      "description": "Course reviews and ratings endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_favorites",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Favorites",
+      "description": "User course bookmarking / favorite endpoints (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_purchases",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Purchases",
+      "description": "Course purchases registration (Requires authentication)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_coupons",
+      "parentId": "wrk_cursoapp",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "name": "Coupons",
+      "description": "Discount coupons endpoints (Requires ADMIN/INSTRUCTOR roles)",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1600000000000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "req_register",
+      "parentId": "fld_auth",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "url": "{{ _.base_url }}/api/auth/register",
+      "name": "Register User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"newuser\",\n  \"email\": \"newuser@example.com\",\n  \"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_login",
+      "parentId": "fld_auth",
+      "modified": 1782856422916,
+      "created": 1782856422916,
+      "url": "{{ _.base_url }}/api/auth/login",
+      "name": "Login User",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"usernameOrEmail\": \"newuser\",\n  \"password\": \"password123\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_get_all",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users",
+      "name": "Get All Users",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_get_by_id",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users/1",
+      "name": "Get User By ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_get_by_role",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users/by-role",
+      "name": "Get Users By Role",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "roleId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_update",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users/1",
+      "name": "Update User",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"username\": \"updatedusername\",\n  \"email\": \"updatedemail@example.com\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_deactivate",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users/1/deactivate",
+      "name": "Deactivate User",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_users_activate",
+      "parentId": "fld_users",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/users/1/activate",
+      "name": "Activate User",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_get_all",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses",
+      "name": "Get All Courses",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_get_by_id",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1",
+      "name": "Get Course By ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_get_by_tag",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/by-tag",
+      "name": "Get Courses By Tag",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "tagId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_get_by_instructor",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/by-instructor",
+      "name": "Get Courses By Instructor",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "instructorId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_create",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses",
+      "name": "Create Course",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Spring Boot for Beginners\",\n  \"price\": 29.99,\n  \"tagIds\": [\n    1,\n    2\n  ]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_update",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1",
+      "name": "Update Course",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Advanced Spring Boot\",\n  \"price\": 39.99,\n  \"tagIds\": [\n    1,\n    3\n  ]\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_publish",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1/publish",
+      "name": "Publish Course",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_unpublish",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1/unpublish",
+      "name": "Unpublish Course",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_delete",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1",
+      "name": "Delete Course",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_courses_restore",
+      "parentId": "fld_courses",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/courses/1/restore",
+      "name": "Restore Course",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_tags_get_all",
+      "parentId": "fld_tags",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/tags",
+      "name": "Get All Tags",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_tags_get_by_id",
+      "parentId": "fld_tags",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/tags/1",
+      "name": "Get Tag By ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_tags_create",
+      "parentId": "fld_tags",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/tags",
+      "name": "Create Tag",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Backend\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_tags_update",
+      "parentId": "fld_tags",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/tags/1",
+      "name": "Update Tag",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Full Stack\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_tags_delete",
+      "parentId": "fld_tags",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/tags/1",
+      "name": "Delete Tag",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_modules_create",
+      "parentId": "fld_modules",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/modules",
+      "name": "Create Module",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Introduction to the Course\",\n  \"index\": 1,\n  \"courseId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_modules_by_course",
+      "parentId": "fld_modules",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/modules/course/1",
+      "name": "Get Modules by Course",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_modules_get_by_id",
+      "parentId": "fld_modules",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/modules/1",
+      "name": "Get Module by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_modules_update",
+      "parentId": "fld_modules",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/modules/1",
+      "name": "Update Module",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"Introduction to the Course (Updated)\",\n  \"index\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_modules_delete",
+      "parentId": "fld_modules",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/modules/1",
+      "name": "Delete Module",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_lections_create",
+      "parentId": "fld_lections",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/lections",
+      "name": "Create Lection",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"1.1 Project Setup\",\n  \"content\": \"In this lesson we setup our build system...\",\n  \"moduleId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_lections_by_module",
+      "parentId": "fld_lections",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/lections/module/1",
+      "name": "Get Lections by Module",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_lections_get_by_id",
+      "parentId": "fld_lections",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/lections/1",
+      "name": "Get Lection by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_lections_update",
+      "parentId": "fld_lections",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/lections/1",
+      "name": "Update Lection",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"title\": \"1.1 Project Setup (Updated)\",\n  \"content\": \"Updated description content.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_lections_delete",
+      "parentId": "fld_lections",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/lections/1",
+      "name": "Delete Lection",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_videos_create",
+      "parentId": "fld_videos",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/videos",
+      "name": "Create Video Reference",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"videoUrl\": \"https://www.youtube.com/watch?v=dQw4w9WgXcQ\",\n  \"lectionId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_videos_by_lection",
+      "parentId": "fld_videos",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/videos/lection/1",
+      "name": "Get Videos by Lection",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_videos_get_by_id",
+      "parentId": "fld_videos",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/videos/1",
+      "name": "Get Video by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_videos_delete",
+      "parentId": "fld_videos",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/videos/1",
+      "name": "Delete Video Reference",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_files_create",
+      "parentId": "fld_files",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/files",
+      "name": "Create File Reference",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"pathToFile\": \"/uploads/resources/sample-workbook.pdf\",\n  \"lectionId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_files_by_lection",
+      "parentId": "fld_files",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/files/lection/1",
+      "name": "Get Files by Lection",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_files_get_by_id",
+      "parentId": "fld_files",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/files/1",
+      "name": "Get File by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_files_delete",
+      "parentId": "fld_files",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/files/1",
+      "name": "Delete File Reference",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_questions_create",
+      "parentId": "fld_questions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/questions/user/1",
+      "name": "Create Question",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"content\": \"Can you explain how the JWT Filter extracts user details?\",\n  \"lectionId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_questions_by_lection",
+      "parentId": "fld_questions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/questions/lection/1",
+      "name": "Get Questions by Lection",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_questions_by_user",
+      "parentId": "fld_questions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/questions/user/1",
+      "name": "Get Questions by User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_questions_get_by_id",
+      "parentId": "fld_questions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/questions/1",
+      "name": "Get Question by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_questions_delete",
+      "parentId": "fld_questions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/questions/1",
+      "name": "Delete Question",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_answers_create",
+      "parentId": "fld_answers",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/answers/instructor/1",
+      "name": "Create Answer",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"content\": \"The JwtFilter reads the Authorization header, validates the signature and sets the Authentication token in SecurityContext.\",\n  \"questionId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_answers_by_question",
+      "parentId": "fld_answers",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/answers/question/1",
+      "name": "Get Answers by Question",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_answers_get_by_id",
+      "parentId": "fld_answers",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/answers/1",
+      "name": "Get Answer by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_answers_delete",
+      "parentId": "fld_answers",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/answers/1",
+      "name": "Delete Answer",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_completions_get_by_id",
+      "parentId": "fld_completions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/completions/1",
+      "name": "Get Completion by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_completions_by_user",
+      "parentId": "fld_completions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/completions/by-user",
+      "name": "Get Completions by User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "userId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_completions_completed_by_user",
+      "parentId": "fld_completions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/completions/completed-by-user",
+      "name": "Get Completed Lections by User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "userId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_completions_create",
+      "parentId": "fld_completions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/completions",
+      "name": "Mark Lection as Completed",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"lectionId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_completions_incomplete",
+      "parentId": "fld_completions",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/completions/incomplete",
+      "name": "Mark Lection as Incomplete",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [
+        {
+          "name": "userId",
+          "value": "1"
+        },
+        {
+          "name": "lectionId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_reviews_get_by_id",
+      "parentId": "fld_reviews",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/reviews/1",
+      "name": "Get Review by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_reviews_by_course",
+      "parentId": "fld_reviews",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/reviews/by-course",
+      "name": "Get Reviews by Course",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "courseId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_reviews_create",
+      "parentId": "fld_reviews",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/reviews",
+      "name": "Create Review",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"score\": 5,\n  \"comment\": \"Outstanding course structure and examples!\",\n  \"courseId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_reviews_update",
+      "parentId": "fld_reviews",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/reviews/1",
+      "name": "Update Review",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"score\": 4,\n  \"comment\": \"Good course. An updated section on testing would make it 5 stars.\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_reviews_delete",
+      "parentId": "fld_reviews",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/reviews/1",
+      "name": "Delete Review",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_favorites_by_user",
+      "parentId": "fld_favorites",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/favorites/by-user",
+      "name": "Get Favorites by User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_favorites_create",
+      "parentId": "fld_favorites",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/favorites",
+      "name": "Add Course to Favorites",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"courseId\": 1\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_favorites_delete",
+      "parentId": "fld_favorites",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/favorites/1",
+      "name": "Remove Course from Favorites",
+      "description": "",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_purchases_get_all",
+      "parentId": "fld_purchases",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/purchases",
+      "name": "Get All Purchases",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_purchases_get_by_id",
+      "parentId": "fld_purchases",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/purchases/1",
+      "name": "Get Purchase by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_purchases_by_user",
+      "parentId": "fld_purchases",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/purchases/by-user",
+      "name": "Get Purchases by User",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "userId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_purchases_by_course",
+      "parentId": "fld_purchases",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/purchases/by-course",
+      "name": "Get Purchases by Course",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "courseId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_purchases_create",
+      "parentId": "fld_purchases",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/purchases",
+      "name": "Create Purchase",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"courseId\": 1,\n  \"couponId\": null\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_get_all",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons",
+      "name": "Get All Coupons",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_get_by_id",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons/1",
+      "name": "Get Coupon by ID",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_by_code",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons/by-code",
+      "name": "Get Coupon by Code",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "code",
+          "value": "PROMO2026"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_by_course",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons/by-course",
+      "name": "Get Coupons by Course",
+      "description": "",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "courseId",
+          "value": "1"
+        }
+      ],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_create",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons",
+      "name": "Create Coupon",
+      "description": "",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"code\": \"PROMO2026\",\n  \"discount\": 0.2,\n  \"courseId\": 1,\n  \"expirationDate\": \"2026-12-31T23:59:59.000Z\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_update",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons/1",
+      "name": "Update Coupon",
+      "description": "",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"discount\": 0.25,\n  \"expirationDate\": \"2027-01-15T23:59:59.000Z\"\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    },
+    {
+      "_id": "req_coupons_deactivate",
+      "parentId": "fld_coupons",
+      "modified": 1782856422917,
+      "created": 1782856422917,
+      "url": "{{ _.base_url }}/api/coupons/1/deactivate",
+      "name": "Deactivate Coupon",
+      "description": "",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {
+        "type": "bearer",
+        "token": "{{ _.token }}"
+      },
+      "metaSortKey": -1600000000000,
+      "isPrivate": false,
+      "_type": "request"
+    }
+  ]
+}

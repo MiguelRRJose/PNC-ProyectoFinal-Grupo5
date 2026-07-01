@@ -52,6 +52,16 @@ public class SecurityConfig {
                         // ADMIN o INSTRUCTOR
                         .requestMatchers("/api/coupons/**").hasAnyRole("ADMIN", "INSTRUCTOR")
                         .requestMatchers("/api/courses/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.DELETE, "/api/modules/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.PUT, "/api/modules/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.POST, "/api/modules/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.DELETE, "/api/lections/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.PUT, "/api/lections/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.POST, "/api/lections/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.POST, "/api/videos/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.DELETE, "/api/videos/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.POST, "/api/files/**").hasAnyRole("ADMIN", "INSTRUCTOR")
+                        .requestMatchers(HttpMethod.DELETE, "/api/files/**").hasAnyRole("ADMIN", "INSTRUCTOR")
 
                         // Cualquier autenticado
                         .anyRequest().authenticated()

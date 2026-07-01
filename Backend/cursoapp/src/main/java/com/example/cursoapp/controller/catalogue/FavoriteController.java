@@ -12,6 +12,7 @@ import com.example.cursoapp.config.UsuarioDetails;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/favorites")
@@ -35,7 +36,7 @@ public class FavoriteController {
 
     @GetMapping("/by-user")
     public ResponseEntity<GeneralResponse> getFavoritesByUser() {
-        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UsuarioDetails usuarioDetails = (UsuarioDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
         Long userId = usuarioDetails.getId();
         return buildResponse(
                 favoriteService.getAllFavoritesByUser(userId),
@@ -46,7 +47,7 @@ public class FavoriteController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> addFavorite(@RequestBody CreateFavoriteRequest request) {
-        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        UsuarioDetails usuarioDetails = (UsuarioDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
         Long userId = usuarioDetails.getId();
         return buildResponse(
                 favoriteService.createFavorite(request, userId),

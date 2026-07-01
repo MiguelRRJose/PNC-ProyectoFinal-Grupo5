@@ -9,19 +9,20 @@ import com.example.cursoapp.mapper.catalogue.TagMapper;
 import com.example.cursoapp.repository.catalogue.CourseRepository;
 import com.example.cursoapp.repository.catalogue.ReviewRepository;
 import com.example.cursoapp.repository.catalogue.TagRepository;
+import com.example.cursoapp.repository.identity.UsuarioRepository;
 import com.example.cursoapp.service.catalogue.CourseService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.util.Pair;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 @Transactional
 public class CourseServiceImpl implements CourseService {
+    private final UsuarioRepository userRepository;
     private final CourseRepository courseRepository;
     private final TagRepository tagRepository;
     private final ReviewRepository reviewRepository;
@@ -192,7 +193,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional(readOnly = true)
     public List<BasicCourseResponse> getAllCoursesByInstructor(Long instructorId) {
-        List<Course> courses = courseRepository.findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(instructorId);
+        List<Course> courses = courseRepository.findCourseByInstructor_Id(instructorId);
 
         return courses.stream().map(
                 (course) -> {
@@ -210,7 +211,7 @@ public class CourseServiceImpl implements CourseService {
     @Override
     @Transactional(readOnly = true)
     public List<AdminCourseResponse> getAllAdminCoursesByInstructor(Long instructorId) {
-        List<Course> courses = courseRepository.findByInstructorIdAndIsPublishedFalseAndIsDeletedFalse(instructorId);
+        List<Course> courses = courseRepository.findCourseByInstructor_Id(instructorId);
 
         return courses.stream().map(
                 (course) -> {
@@ -229,13 +230,15 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public InstructorCourseResponse createCourse(CreateCourseRequest request) {
+    public InstructorCourseResponse createCourse(CreateCourseRequest request, Long instructorId) {
+
         Course course = courseRepository.save(CourseMapper.toCreateEntity(
                 request,
                 request.tagIds().stream().map((tagId) ->
                         tagRepository.findById(tagId).orElseThrow(
                                 () -> new IllegalStateException("The ID provided does not belong to any existing Tag.") // () -> new ResourceNotFoundException("Tag not found with id: " + tagId)
-                        )).toList()
+                        )).toList(),
+                userRepository.getReferenceById(instructorId)
         ));
 
         return CourseMapper.toInstructorDTO(

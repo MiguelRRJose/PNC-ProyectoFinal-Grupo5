@@ -2,6 +2,7 @@ package com.example.cursoapp.mapper.catalogue;
 
 import com.example.cursoapp.domain.entity.catalogue.Course;
 import com.example.cursoapp.domain.entity.catalogue.Tag;
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.dto.catalogue.course.*;
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
 import com.example.cursoapp.dto.identity.user.UserResponse;
@@ -85,11 +86,13 @@ public class CourseMapper {
 
     public static Course toCreateEntity (
             CreateCourseRequest createRequest,
-            List<Tag> tags
+            List<Tag> tags,
+            Usuario instructor
     ) {
         return Course.builder()
                 .name(createRequest.name())
                 .price(createRequest.price())
+                .instructor(instructor)
                 .tags(tags)
                 .build();
     }

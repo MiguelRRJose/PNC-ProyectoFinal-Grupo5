@@ -18,7 +18,7 @@ public interface CourseService {
     List<BasicCourseResponse> getAllCoursesByInstructor(Long instructorId);
     List<AdminCourseResponse> getAllAdminCoursesByInstructor(Long instructorId);
 
-    InstructorCourseResponse createCourse(CreateCourseRequest request);
+    InstructorCourseResponse createCourse(CreateCourseRequest request, Long instructorId);
 
     InstructorCourseResponse updateCourse(Long courseId, UpdateCourseRequest request);
 
