@@ -9,6 +9,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.cursoapp.config.UsuarioDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
 
@@ -53,9 +55,8 @@ public class ReviewController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> createReview(@RequestBody CreateReviewRequest request) {
-
-        //TODO: Get the user ID somehow using the JWT context
-        Long userId = null;
+        UsuarioDetails usuarioDetails = (UsuarioDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        Long userId = usuarioDetails.getId();
 
         return buildResponse(
                 reviewService.createReview(request, userId),

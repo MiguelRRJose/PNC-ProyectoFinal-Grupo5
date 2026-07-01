@@ -1,17 +1,22 @@
 package com.example.cursoapp.controller.catalogue;
 
+import com.example.cursoapp.config.UsuarioDetails;
 import com.example.cursoapp.dto.GeneralResponse;
 import com.example.cursoapp.dto.catalogue.course.CreateCourseRequest;
 import com.example.cursoapp.dto.catalogue.course.UpdateCourseRequest;
+import com.example.cursoapp.service.auth.AuthService;
 import com.example.cursoapp.service.catalogue.CourseService;
+import com.example.cursoapp.service.identity.impl.UsuarioDetailsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.time.Instant;
+import java.util.Objects;
 
 //TODO: Modify the endpoints so that they return an appropriate response based on the User's role
 
@@ -20,6 +25,7 @@ import java.time.Instant;
 @RequiredArgsConstructor
 public class CourseController {
     private final CourseService courseService;
+    private final UsuarioDetailsService userDetailsService;
 
     private ResponseEntity<GeneralResponse> buildResponse(Object data, String message, HttpStatus status) {
         String uri = ServletUriComponentsBuilder.fromCurrentRequestUri().build().getPath();
@@ -77,8 +83,10 @@ public class CourseController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> createCourse(@RequestBody @Valid CreateCourseRequest request) {
+        UsuarioDetails usuarioDetails = (UsuarioDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        Long userId = usuarioDetails.getId();
         return buildResponse(
-                courseService.createCourse(request),
+                courseService.createCourse(request, userId),
                 "Course successfully created.",
                 HttpStatus.CREATED
         );

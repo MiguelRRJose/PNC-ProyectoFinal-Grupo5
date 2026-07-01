@@ -17,16 +17,12 @@ public class TagMapper {
     }
 
     public static AdminTagResponse toAdminDTO(
-            Tag tag,
-            Instant lastModifiedAt,
-            String lastModifiedBy
+            Tag tag
     ) {
         return AdminTagResponse.builder()
                 .id(tag.getId())
                 .currentName(tag.getName())
                 .createdAt(tag.getCreatedAt())
-                .lastModifiedAt(lastModifiedAt)
-                .lastModifiedBy(lastModifiedBy)
                 .build();
     }
 

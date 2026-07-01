@@ -2,13 +2,18 @@ package com.example.cursoapp.mapper.catalogue;
 
 import com.example.cursoapp.domain.entity.catalogue.Course;
 import com.example.cursoapp.domain.entity.catalogue.Tag;
+import com.example.cursoapp.domain.entity.identity.Usuario;
 import com.example.cursoapp.dto.catalogue.course.*;
 import com.example.cursoapp.dto.catalogue.tag.BasicTagResponse;
+import com.example.cursoapp.dto.identity.user.UserResponse;
+import com.example.cursoapp.mapper.identity.UsuarioMapper;
 
 import java.time.Instant;
 import java.util.List;
 
 public class CourseMapper {
+    private static UsuarioMapper userMapper = new UsuarioMapper();
+
     public static BasicCourseResponse toBasicDTO (
             Course course,
             List<BasicTagResponse> tags,
@@ -20,7 +25,7 @@ public class CourseMapper {
                 .name(course.getName())
                 .price(course.getPrice())
                 .tags(tags)
-                //.instructor() //TODO: Add this when BasicUserResponse is ready.
+                .instructor(userMapper.toDto(course.getInstructor()))
                 .createdAt(course.getCreatedAt())
                 .averageRating(averageRating)
                 .reviewCount(reviewCount)
@@ -75,17 +80,19 @@ public class CourseMapper {
                 .enrollmentCount(enrollmentCount)
                 .certifiedCount(certifiedCount)
                 .totalRevenue(totalRevenue)
-                //.instructor() //TODO: Add instructor info when AdminUserResponse is ready
+                .instructor(userMapper.toDto(course.getInstructor()))
                 .build();
     }
 
     public static Course toCreateEntity (
             CreateCourseRequest createRequest,
-            List<Tag> tags
+            List<Tag> tags,
+            Usuario instructor
     ) {
         return Course.builder()
                 .name(createRequest.name())
                 .price(createRequest.price())
+                .instructor(instructor)
                 .tags(tags)
                 .build();
     }

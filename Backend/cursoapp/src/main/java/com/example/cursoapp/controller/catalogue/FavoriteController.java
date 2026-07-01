@@ -8,8 +8,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import com.example.cursoapp.config.UsuarioDetails;
+import org.springframework.security.core.context.SecurityContextHolder;
 
 import java.time.Instant;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/api/favorites")
@@ -33,9 +36,9 @@ public class FavoriteController {
 
     @GetMapping("/by-user")
     public ResponseEntity<GeneralResponse> getFavoritesByUser() {
-        Long userId = null;
+        UsuarioDetails usuarioDetails = (UsuarioDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        Long userId = usuarioDetails.getId();
         return buildResponse(
-                //TODO: Then again, JWT to get the userId
                 favoriteService.getAllFavoritesByUser(userId),
                 "Favorites successfully found.",
                 HttpStatus.OK
@@ -44,7 +47,8 @@ public class FavoriteController {
 
     @PostMapping
     public ResponseEntity<GeneralResponse> addFavorite(@RequestBody CreateFavoriteRequest request) {
-        Long userId = null; //TODO: Another temporary null that needs fixing
+        UsuarioDetails usuarioDetails = (UsuarioDetails) Objects.requireNonNull(SecurityContextHolder.getContext().getAuthentication()).getPrincipal();
+        Long userId = usuarioDetails.getId();
         return buildResponse(
                 favoriteService.createFavorite(request, userId),
                 "Favorite successfully added.",

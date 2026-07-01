@@ -43,12 +43,7 @@ public class TagServiceImpl implements TagService {
     public AdminTagResponse findByIdAdmin(Long id) {
         Tag tag = getByIdOrThrow(id);
 
-        //TODO: Somehow, I will be able to do this properly later
-
-        Instant lastModifiedAt = null;
-        String lastModifiedBy = null;
-
-        return TagMapper.toAdminDTO(tag, lastModifiedAt, lastModifiedBy);
+        return TagMapper.toAdminDTO(tag);
     }
 
     @Override
@@ -62,42 +57,22 @@ public class TagServiceImpl implements TagService {
 
     @Override
     public AdminTagResponse createTag(CreateTagRequest request) {
-        //TODO: Here, there needs to be an audit of the creation of the Tag.
-
-        Instant lastModifiedAt = null;
-        String lastModifiedBy = null;
-
-        return TagMapper.toAdminDTO(
-                tagRepository.save(TagMapper.toCreateEntity(request)),
-                lastModifiedAt, lastModifiedBy
-        );
+        Tag tag = tagRepository.save(TagMapper.toCreateEntity(request));
+        return TagMapper.toAdminDTO(tag);
     }
 
     @Override
     public AdminTagResponse updateTag(Long id, UpdateTagRequest request) {
         Tag tag = getByIdOrThrow(id);
-
         Tag updatedTag = tagRepository.save(TagMapper.toUpdateEntity(tag, request));
 
-        //TODO: Here, there needs to be an audit of the updating of the Tag.
-
-        Instant lastModifiedAt = null;
-        String lastModifiedBy = null;
-
-        return TagMapper.toAdminDTO(updatedTag, lastModifiedAt, lastModifiedBy);
+        return TagMapper.toAdminDTO(updatedTag);
     }
 
     @Override
     public AdminTagResponse deleteTag(Long id) {
         Tag tag = getByIdOrThrow(id);
-
-        //TODO: Here, there needs to be an audit of the deletion of the Tag.
-
-        Instant lastModifiedAt = null;
-        String lastModifiedBy = null;
-
         tagRepository.delete(tag);
-
-        return TagMapper.toAdminDTO(tag, lastModifiedAt, lastModifiedBy);
+        return TagMapper.toAdminDTO(tag);
     }
 }

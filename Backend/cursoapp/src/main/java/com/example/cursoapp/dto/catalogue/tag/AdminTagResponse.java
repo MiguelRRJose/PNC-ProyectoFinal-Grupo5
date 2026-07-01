@@ -10,8 +10,6 @@ public record AdminTagResponse(
         String currentName,
 
         // Auditoría
-        Instant createdAt,
-        Instant lastModifiedAt,
-        String lastModifiedBy
+        Instant createdAt
 ) {
 }

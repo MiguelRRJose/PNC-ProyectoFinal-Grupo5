@@ -13,7 +13,6 @@ public record UpdateCourseRequest(
         @DecimalMin(value="0.0", message = "The price cannot be negative.")
         Double price,
 
-        @NotEmpty(message = "The Course requires at least one tag.")
         List<Long> tagIds
 
         // Los atributos isPublished e isDeleted serán manejados en endpoints dedicados.
